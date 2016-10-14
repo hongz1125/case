@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+
+	<body>
+		<style type="text/css">
+			.JSinView {
+				background: #faf;
+			}
+			.JSanimation {
+				background: #333;
+			}
+		</style>
+
+		<div style="height:600px;"></div>
+		<div style="height:100px;" class="JSinView JSanimation">
+			5555
+		</div>
+		<div style="height:600px;"></div>
+		<div style="height:100px;" class="JSinView">
+			6666
+		</div>
+		<div style="height:600px;"></div>
+		<div style="height:100px;" class="JSinView">
+			777
+		</div>
+
+		<script src="static/js/jquery.js"></script>
+		<script>
+			/**
+			 * @author devil
+			 * @title jquery 判断元素是否在可视范围内 并添加删除JSanimation
+			 * @param string jquery 选择器
+			 *  */
+			$.extend({
+				isVisible : function(d) {
+					var fun = function() {
+						$(d).each(function() {
+							var self = $(this);
+							var oT = self.offset().top;
+							var oH = self.outerHeight();
+							var wT = $(window).scrollTop();
+							var wH = $(window).height();
+							if (oT >= wT && oT + oH <= wT + wH) {
+								self.addClass("JSanimation");
+							}
+							if (oT + oH <= wT || oT >= wT + wH) {
+								self.removeClass("JSanimation");
+							}
+						});
+					};
+					fun();
+					$(window).on("scroll", function() {
+						fun();
+					});
+				}
+			});
+
+
+
+			$(function() {
+				$.isVisible(".JSinView");//添加元素是否可见监听
+			});
+		</script>
+	</body>
+</html>

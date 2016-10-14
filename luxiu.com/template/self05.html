@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        个人资料
+        <div class="headLf"> <i class="iconfont" data-href="self01.html">&#58924;</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_box_3 first">
+            <p class="lx_list_41 l120">
+                头像
+                <span>
+                    <img src="/static/images/lx_1.png"  class="vm"/> <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41" data-href="self18.html">
+                昵称
+                <span>
+                    黑色柳丁
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41">
+                手机号码
+                <span>
+                    未绑定
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="lx_box_3">
+            <p class="lx_list_41" data-href="self08.html">
+                实名认证
+                <span>
+                    未认证
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="lx_box_3 mb40">
+            <p class="lx_list_41" data-href="self07.html">
+                公司及职务
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41" data-href="self09.html">
+                性别
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41" data-href="self10.html">
+                地区
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41" data-href="self11.html">
+                邮箱
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="lx_box_3">
+            <p class="lx_list_41" data-href="self12.html">
+                备注
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+
+    </section>
+
+</body>
+</html>

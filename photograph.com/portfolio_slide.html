@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>JAYDEN TANG</title>
+<link type="text/css" rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="lang"><a href="index.html" class="lang_en"></a><i></i><a href="index_cn.html" class="lang_cn"></a></div>
+  </div>
+  <div class="content clearfix">
+    <div class="cont_lf">
+      <div class="logo"></div>
+      <div class="pg_nav_2">
+        <ul>
+          <li><a class="no1" href="index.html">Home</a></li>
+          <li><a class="no2"  href="about.html">About</a></li>
+          <li class="thr hot"><a class="no3"  href="portfolio.html">Portfolio</a></li>
+          <li class="sen hot"><a class="no31"  href="portfolio.html">Fashion</a></li>
+          <li class="sen"><a class="no32"  href="portfolio.html">Advertising</a></li>
+          <li class="sen"><a class="no33"  href="portfolio.html">Beauty</a></li>
+          <li class="sen"><a class="no34"  href="portfolio.html">Personal</a></li>
+          <li><a class="no4"  href="howwework.html">How we work</a></li>
+          <li><a class="no5"  href="creativeinsight.html">Creative insights</a></li>
+          <li><a class="no6"  href="news.html">News</a></li>
+          <li><a class="no7"  href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cont_ri">
+      <div class="pg_box_1" id="pg_box_1"><i></i><img title="#" src="images/ad/ad_12.jpg"></div>
+      <div class="pg_list_8" id="pg_list_8"><i class="circu"></i><i class="prev"></i><i class="next"></i><b>1/12</b></div>
+      <div class="scroll-pane horizontal-only pg_list_9" id="pg_list_9">
+      <p>
+     	<a href="#" title="#" class="hot"><img src="images/ad/small_ad_10.jpg" bigpic="images/ad/ad_10.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_11.jpg" bigpic="images/ad/ad_11.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_12.jpg" bigpic="images/ad/ad_12.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_13.jpg" bigpic="images/ad/ad_13.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_10.jpg" bigpic="images/ad/ad_10.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_11.jpg" bigpic="images/ad/ad_11.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_12.jpg" bigpic="images/ad/ad_12.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_13.jpg" bigpic="images/ad/ad_13.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_10.jpg" bigpic="images/ad/ad_10.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_11.jpg" bigpic="images/ad/ad_11.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_12.jpg" bigpic="images/ad/ad_12.jpg"></a><a href="#" title="#"><img src="images/ad/small_ad_13.jpg" bigpic="images/ad/ad_13.jpg"></a>
+     	</p>
+      </div>
+      <div class="pg_list_10">
+      Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio <br /> <br />Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Polio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfoolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfoortfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio Portfolio 
+      </div>
+    </div>
+  </div>
+</div>
+<!--pg_js-->
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script> 
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script> 
+<script type="text/javascript" src="js/base.js"></script> 
+<!--/pg_js-->
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#pg_list_8 .circu").click(function(){
+		var obj = $("#pg_box_1 img");
+		var b = obj.attr("class") || "rot_0";
+		var a= parseInt(b.split("_")[1]);
+		a = a+1;
+		if(a==4){a = 0};
+		obj.attr("class","rot_"+a);
+		return false;
+	})
+	$("#pg_list_9 a").click(function(){
+		var obj = $(this);
+		showHotPic(obj);
+		return false;
+	})
+	$("#pg_list_8 i.next").click(function(){
+		var obj = $("#pg_list_9 a.hot").next();
+		if(obj[0]){showHotPic(obj)}		
+	})
+	$("#pg_list_8 i.prev").click(function(){
+		var obj = $("#pg_list_9 a.hot").prev();
+		if(obj[0]){showHotPic(obj)}		
+	})
+	
+	
+	
+	var picWidth=0;
+	$("#pg_list_9 p a").each(function(){
+		$(this).attr("left",picWidth);
+		picWidth += $(this).width();
+		$(this).attr("right",picWidth)
+	})
+	$("#pg_list_9 p").css("width",picWidth)
+	
+})
+
+function showHotPic(obj){
+	var no;
+	if(obj.hasClass("hot")){return false};
+	$("#pg_list_9 p a.hot").removeClass("hot");
+	obj.addClass("hot");
+	$("#pg_box_1 img").attr("src",obj.find("img").attr("bigpic"));
+	$("#pg_box_1 img").removeAttr("class").removeAttr("style");
+	no = $("#pg_list_9 p a").index($("#pg_list_9 p a.hot")) + 1;
+	no += "/";
+	no+= $("#pg_list_9 p a").length;
+	$("#pg_list_8 b").text(no);
+	
+	
+	var objPar = $("#pg_list_9 p");
+	var objOff = $(".jspContainer");
+	var objPP = $(".jspPane");
+	var objPPleft = parseInt(objPP.css("left"));
+	var objppbig = 690 - objPPleft - objPar.width();
+	var objppc = 690 - objPar.width();
+	
+	var showR = 690 - (obj.offset().left - objOff.offset().left + obj.width());//得到对象右边边距
+	var showL = obj.offset().left - objOff.offset().left;//得到对象左边边距
+	
+	if(objPar.width() < 690){return false}
+	if(showR<obj.next().width() && obj.next()[0]){objPP.css("left",objPPleft-obj.next().width())}
+	if(showL<obj.prev().width() && obj.prev()[0]){objPP.css("left",-(obj.prev().attr("left")))}
+	return false;
+}
+</script>
+</body>
+</html>

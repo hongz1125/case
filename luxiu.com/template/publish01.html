@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+<link rel="stylesheet" href="/static/css/index.css"/>
+<script src="/static/js/jquery.js"></script>
+
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/index.js"></script></head>
+<body>
+
+    <header>
+        发布项目
+        <div class="headLf"> <i class="iconfont" data-href="project01.html">&#58924;</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+        <div class="lx_box_3">
+            <form method="post" action="../static/data/publishSearch.json">
+                <div class="pr">
+                    <input type="text" class="lx_inp_1" placeholder="搜索公司代码或者简称" id="searchInput" /></div>
+            </form>
+        </div>
+        <div class="lx_box_3">
+            <ul class="lx_list_42" id="searchContent">
+                <li data-href="publish02.html">
+                    北大医药 <i class="lx_font_1">[000788]</i>
+                    <span>
+                        <i class="iconfont lx_ico_2"></i>
+                    </span>
+                </li>
+                <li data-href="publish02.html">
+                    华神集团
+                    <i class="lx_font_1">[000788]</i>
+                    <span>
+                        <i class="iconfont lx_ico_2"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+
+</body>
+</html>

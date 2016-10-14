@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <style type="text/css">
+
+
+    </style>
+	</head>
+	<body>
+	<div style="width:375px;height:50px;">
+		<input type="date" style="width:375px;height:50px;background:none;color:#666;border:0;" value="2015-06-06" min="2015-07-01" max="2050-01-01" id="date"/>
+	</div>
+	<i class="iconfont">&#58880;</i>
+
+	<i class="iconfont demo">&#58886;</i>
+	<i class="iconfont">&#58885;</i>
+
+
+	<script> 
+
+	</script>
+	</body>
+	</html>

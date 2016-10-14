@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        发布项目
+        <div class="headLf"> <i class="iconfont" data-href="project01.html"></i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+
+        <div class="lx_place_1"></div>
+        <div class="lx_box_3">
+            <form method="post" action="../static/data/publishSearch.json">
+                <p class="lx_list_1">
+                    <input type="text" class="lx_inp_4" id="searchInput"  placeholder="请输入行业代码" value=""> <i class="inputTxt inputTxtLf">公司代码</i>
+                </p>
+            </form>
+            <ul class="lx_list_42" id="searchContent"></ul>
+            <div id="companyInfo" style="display:none;">
+                <p class="lx_list_10">
+                    公司名称
+                    <span>
+                        <i id="shortName"></i>
+                    </span>
+                </p>
+                <p class="lx_list_10">
+                    申万行业
+                    <span>
+                        <i id="industryName"></i>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <form action="/static/data/publish_1.json" method="post">
+            <input type="hidden" id="vCode" name="code" />
+            <div class="lx_box_3">
+                <p class="lx_pis_2">价格</p>
+                <p class="lx_list_5">
+                    <span class="active" data-pricetype="#radio01">
+                        绝对价格
+                        <i class="arrow-up"></i>
+                        <i class="arrow-up arrow-up2"></i>
+                    </span>
+                    <span data-pricetype="#radio02">
+                        相对于市价
+                        <i class="arrow-up"></i>
+                        <i class="arrow-up arrow-up2"></i>
+                    </span>
+                    <span data-pricetype="#radio03">保密</span>
+                </p>
+                <div class="lx_list_5cont">
+                    <input type="hidden" name="priceType" id="vPriceType" value="0">
+                    <div class="pr active" id="radio01">
+                        <input type="text" class="lx_inp_1" id="vPriceType0" placeholder="请输入购买价格">
+                        <i class="lx_inp_ri">元/股</i>
+                    </div>
+                    <div class="pr" id="radio02">
+                        <input type="text" class="lx_inp_1" id="vPriceType1" placeholder="请输入相对市价">
+                        <i class="lx_inp_ri">%</i>
+                    </div>
+                    <div class="pr" id="radio03"></div>
+                </div>
+            </div>
+            <div class="lx_list_1">
+                <input type="text" class="lx_inp_4" id="vStockNum" name="stockNum" placeholder="请输入卖出股数" value="800">
+                <i class="inputTxt inputTxtLf">卖出股数</i>
+                <i class="inputTxt inputTxtRi">万股</i>
+            </div>
+            <div class="lx_list_1 next mb10">
+                <input type="date" class="lx_inp_4" id="vBanTime" name="banTime" placeholder="请输入股票解禁日期" value="2015-06-01" min="2015-06-01" max="2050-01-01">
+                <i class="inputTxt inputTxtLf">股票解禁日期</i>
+                <i class="iconfont inputTxt inputTxtRi lx_col_b4">&#58889;</i>
+            </div>
+            <div class="lx_box_3 mb40">
+                <p class="lx_list_41" data-href="self12.html">
+                    备注
+                    <span>
+                        <i class="iconfont lx_ico_2"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="tc">
+                <div class="lx_btn_1" data-ajaxform="true">发布项目</div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>
+        鹿秀用户注册协议
+        <div class="headLf"> <i class="iconfont">&#58924;</i>
+        </div>
+    </header>
+
+    <section class="lx_box_1">
+     <div class="lx_list_43">
+       <p class="title">鹿秀金融网站用户协议</p>
+       <p class="bold">重要提示</p>
+       <p>[鹿秀金融（www.roadshowcenter.com）]是由[北京鹿秀金融科技有限公司]（以下简称“乙方”）投资并运营的为注册用户（以下简称“甲方”）提供专业中介服务的电子平台（以下简称“本平台”或“[鹿秀金融]”）。本平台依据本协议的约定为甲方提供相关服务。为明确甲方与乙方之间的权利义务关系， 维护双方的合法权益， 本着平。。互利的原则， 双方就本平台服务之相关事宜达成本协议。（本协议凡提及“本平台”， 即同时代表运营本平台的乙方）</p>
+       <p class="bold">双方协议约定如下：</p>
+       <p class="bold">第一条   声明与承诺</p>
+       <p>
+        1.本协议适用于由本平台向甲方提供的有关服务， 本协议经由甲方与乙方共同缔结， 具有法律约束力。<br />
+        2.  本协议内容包括协议正文、法律声明、及所有乙方已经发布或将来可能发布的各类规则、公告或通知（以下合称“本平台规则”或“规则”）。所有规则为本协议不可分割的组成部分， 与协议正文具有同等法律效力。<br />
+        3.  甲方同意， 在本协议的履行过程中， 乙方有权随时对本协议内容进行单方面的变更， 并在本平台相关页面予以公布， 无需另行单独通知甲方； 若甲方在本协议内容公告变更后继续使用本平台提供的任何一项服务</p>
+     </div>
+    </section>
+
+</body>
+</html>

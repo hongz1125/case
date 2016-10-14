@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v1 2014-09-06
+static/css/common.css
+static/css/fonts/icomoon.woff
+static/css/images/ajax-loader.gif
+
+static/js/lib/jquery-2.1.1.min.js
+static/js/lib/jquery.mobile.custom.min.js
+static/js/plugin/jquery.cookie.js
+static/js/plugin/jquery.tmpl.min.js
+static/js/app.js
+static/js/controller.js
+static/js/restapi.js
+
+# Use from network if available
+NETWORK:
+*

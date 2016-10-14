@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>我</header>
+
+    <section class="lx_box_1">
+        <div class="lx_box_3 first">
+            <p class="lx_list_41 l140">
+                <img src="/static/images/lx_1.png"  class="vm"/> <i class="lx_list_12">未实名认证</i> <i class="lx_list_13">187***5432</i>
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <p class="lx_list_41 bblue">
+                <i class="iconfont">&#58895;</i>
+                为了是您正常使用，请去进行实名认证
+                <span>
+                    <i class="iconfont">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="lx_box_3">
+            <p class="lx_list_41">
+                投资偏好
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="lx_box_3 mb40">
+            <p class="lx_list_41">
+                意见反馈
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41">
+                关于
+                <span>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+        <div class="tc">
+            <div class="lx_btn_1 red">退出登陆</div>
+        </div>
+    </section>
+
+    <footer class="lx_foot_1">
+        <span data-href="project01.html">
+            <i class="iconfont">&#58884;</i>
+            <p>项目</p>
+        </span>
+        <span data-href="myproject01.html">
+            <i class="iconfont">&#58910;</i>
+            <p>我的项目</p>
+        </span>
+        <span data-href="message01.html">
+            <i class="iconfont">&#58885;</i>
+            <p>消息</p>
+        </span>
+        <span class="active" data-href="self01.html">
+            <i class="iconfont">&#58886;</i>
+            <p>我</p>
+        </span>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <script src="static/js/lib/jquery-2.1.1.min.js"></script>
+    <script src="static/js/plugin/jquery.tmpl.min.js"></script>
+    <script src="static/js/plugin/jquery.cookie.js"></script>
+    <script src="static/js/restapi.js"></script>
+</head>
+<body>
+<a href="index.html#planIndex?code=login">计划首页 - 未登录</a><br />
+<a href="index.html#planList?code=1001">计划列表 - 未登录</a><br />
+<a href="javascript:;" onclick="delCookiePlanTag()">计划列表 - 删除计划名称cookie</a><br />
+<hr />
+<a href="index.html#accountIndex?code=newMessage">账户首页 - 有新消息的页面</a><br />
+<script>
+function delCookiePlanTag(){
+   localStorage.planName = "";
+   alert("删除成功");
+   location.href="index.html#planList";
+}
+</script>
+</body>
+</html>

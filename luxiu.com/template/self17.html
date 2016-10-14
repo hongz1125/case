@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>
+        关于我们
+        <div class="headLf"> <i class="iconfont" data-href="self01.html">&#58924;</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_pis_7 mb40">V 1.0</div>
+        <div class="lx_box_3 first">
+            <p class="lx_list_41">
+                微信号
+                <span class="lx_col_b4">roadshocenter</span>
+            </p>
+            <div class="lx_line_3"></div>
+            <p class="lx_list_41">
+                客服电话
+                <span class="lx_col_b4">010-80449786</span>
+            </p>
+        </div>
+
+    </section>
+    <footer class="lx_foot_4">Copyright © 2015 Roadshow  All Right Reserved.</footer>
+
+</body>
+</html>

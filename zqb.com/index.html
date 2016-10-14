@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<!-- manifest="phone.manifest" -->
+<head>
+<title>攒钱吧</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+<link rel="apple-touch-icon-precomposed" href="static/images/icon.png" />
+<link href="static/images/favicon.ico" rel="icon" type="image/x-icon">
+<link href="static/css/common.css" rel="stylesheet" />
+</head>
+<body id="mzqb">
+<!--login-->
+<div id="loginIndex" data-role="page"></div>
+<div id="loginRegister" data-role="page"></div>
+<div id="loginRegisterCode" data-role="page"></div>
+<div id="loginRegisterName" data-role="page"></div>
+<div id="loginForget" data-role="page"></div>
+<div id="loginForgetCode" data-role="page"></div>
+<div id="loginForgetSet" data-role="page"></div>
+<!--/login-->
+<!--account-->
+<div id="accountIndex" data-role="page"></div>
+<div id="accountList" data-role="page"></div>
+<!--/account-->
+<!--plan-->
+<div id="planIndex" data-role="page"></div>
+<div id="planList" data-role="page"></div>
+<!--/plan-->
+<!--notice-->
+<div id="noticeList" data-role="page"></div>
+<div id="noticeDetail" data-role="page"></div>
+<!--/notice-->
+<!--test  上线移除-->
+<div id="testing">
+	<ul>
+		<li>&nbsp;O   【测试】</li>
+		<li><a href="index.html#loginIndex">登录</a></li>
+		<li><a href="index.html#loginRegister">注册</a></li>
+		<li><a href="index.html#loginRegisterCode">注册 - 短信验证码</a></li>
+		<li><a href="index.html#loginRegisterName">注册 - 完善资料</a></li>
+		<li><a href="index.html#loginForget">忘记密码</a></li>
+		<li><a href="index.html#loginForgetCode">忘记密码 - 验证码</a></li>
+		<li><a href="index.html#loginForgetSet">忘记密码 - 设置密码</a></li>
+		<li>----------------------------------------</li>
+		<li><a href="index.html#accountIndex">账户  - 首页</a></li>
+		<li><a href="index.html#accountList">账户 - 计划列表</a></li>
+		<li>----------------------------------------</li>
+		<li><a href="index.html#planIndex">计划 - 首页</a></li>
+		<li><a href="index.html#planList">计划 - 计划列表</a></li>
+		<li>----------------------------------------</li>
+		<li><a href="index.html#noticeList">通知 - 列表</a></li>
+		<li><a href="index.html#noticeDetail">通知 - 详情</a></li>
+	</ul>
+</div>
+<!--/test 上线移除-->
+
+<!--ajaxLoading-->
+<div id="ajaxLoading" class="zz_list_20"><div></div><div></div><div><i class="icon-zz-1 zz-ant-3"></i><p>加载中 ...</p></div></div>
+<!--/ajaxLoading-->
+
+<script data-tmpl='loginIndex' type='text/x-jquery-tmpl'>
+    <div class="zz_box_3">
+        <p class="icon-zz-1"></p>
+        <p class="icon-zz-2"></p>
+    </div>
+    <p class="zz_inp_1 zz_tip_3 icon-zz-11"><input type="tel" value="" placeholder="手机号码" name="name" maxlength="11" value=""/><i></i></p>
+    <p class="zz_inp_1 zz_tip_4 zz_tip_5 icon-zz-12"><input type="password" value="" placeholder="密码" name="password" maxlength="16" value=""/></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginIndexBtn">登录</a></p>
+    <p class="zz_txt_2"><a href="#loginForget">忘记密码</a> | <a href="#loginRegister">立即注册</a></p>
+</script>
+<script data-tmpl='loginRegister' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">注册</p>
+    <p class="zz_inp_1 icon-zz-11 zz_tip_5"><input type="tel" placeholder="手机号码" name="name" maxlength="11" value = "${name}" /></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginRegisterBtn">获取验证码</a></p>
+	<p class="zz_txt_2"><a href="#loginIndex">已有帐号,立即登录</a></p>
+</script>
+<script data-tmpl='loginRegisterCode' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">短信验证码已发送</p>
+    <p class="zz_txt_4">${name}&nbsp;<a href="#loginRegister">写错了</a></p>
+    <p class="zz_inp_1 zz_tip_4 zz_tip_5 icon-zz-13"><input type="text" placeholder="请填写验证码" name="validCode" maxlength="4" value=""/></p>
+	<p class="zz_txt_2"><a href="javascript:;" id="loginCodeCantGet">收不到验证码</a></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginRegisterCodeBtn">下一步</a></p>
+</script>
+<script data-tmpl='loginRegisterName' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">请完善资料</p>
+    <p class="zz_inp_1 zz_tip_3 icon-zz-11"><input type="text"  placeholder="填写昵称" name="nickName" maxlength="20" /><i></i></p>
+    <p class="zz_inp_1 zz_tip_4 zz_tip_5 icon-zz-12"><input type="password" placeholder="密码" name="password" maxlength="16" value=""/></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginRegisterNameBtn">完成注册</a></p>
+</script>
+<script data-tmpl='loginForget' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">请输入注册手机号码</p>
+    <p class="zz_inp_1 icon-zz-11 zz_tip_5"><input type="tel" placeholder="手机号码" name="name" maxlength="11" /></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginForgetBtn">下一步</a></p>
+	<p class="zz_txt_2"><a href="#loginIndex">想起来了,我要登录</a></p>
+</script>
+<script data-tmpl='loginForgetCode' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">短信验证码已发送</p>
+	<p class="zz_txt_4">${name}&nbsp;<a href="#loginForget">写错了</a></p>
+    <p class="zz_inp_1 zz_tip_4 zz_tip_5 icon-zz-13"><input type="text" placeholder="请填写验证码" name="validCode" maxlength="4" /></p>
+	<p class="zz_txt_2"><a href="javascript:;" id="loginCodeCantGet">收不到验证码</a></p>
+	<p class="zz_btn_1"><a href="javascript:;" id="loginForgetCodeBtn">下一步</a></p>
+</script>
+<script data-tmpl='loginForgetSet' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_3">验证成功,设置新密码</p>
+    <p class="zz_txt_4">${name}&nbsp;</p>
+    <p class="zz_inp_1 zz_tip_4 zz_tip_5 icon-zz-12"><input type="password" placeholder="设置新密码" name="password" /></p>
+    <p class="zz_btn_1"><a href="javascript:;" id="loginForgetSetBtn">进入账户</a></p>
+</script>
+<script data-tmpl='accountIndex' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_6">我的账户<a href="#noticeList" class="no2 {{if messageNew == 0}}icon-zz-18{{else}}icon-zz-17{{/if}} zz-ant-1"></a></p>
+	<div class="zz_list_3">
+		<p>已攒金额(元)</p>
+		<p class="zz_tip_7">{{html numToDom(earnedMoney)}}</p>
+		<p>昨日已赚(元)<i>累计已赚(元)</i></p>
+		<p class="zz_tip_7">{{html numToDom(yesterdayEarned)}}<i class="zz_tip_7">{{html numToDom(totalEarned)}}</i></p>
+	</div>
+	<div class="zz_list_4 icon-zz-19">月定投<p>待支付 <i>${planWait}</i>&nbsp;|&nbsp;进行中 <i>${planIng}</i> <i class="icon-zz-20"></i></p>
+		<a href="#accountList"></a>
+	</div>
+	<p class="zz_btn_1"><a href="#planIndex">我要攒钱</a></p>
+</script>
+<script data-tmpl='accountList' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_6 zz_tip_8">月定投<a href="#accountIndex" class="no1 icon-zz-16 zz-ant-1"></a><a href="javascript:;" id="accountListEdit" class="no3 zz-ant-1">编辑</a></p>
+	<div>
+	{{each waitRow}}
+	<div class="zz_list_5" data-id="${$value.planId}"><div>
+		<ul>
+			<li class="icon-zz-9">${$value.planName}</li>
+			<li>每期定投金额(元) ${$value.money} </li>
+			<li>期数(月) ${$value.time}</li>
+			<li class="waitPay">待支付</li>
+			<li class="editDel"><i class="icon-zz-14"></i><i class="icon-zz-21"></i></li>
+		</ul>
+	</div></div>
+	{{/each}}
+	</div>
+	<div>
+	{{each ingRow}}
+		<ul class="zz_list_6" data-id="${$value.planId}">
+			<li class="icon-zz-9">${$value.planName}</li>
+			<li>每期定投金额(元)</li>
+			<li>${$value.total}</li>
+			<li>累计已赚(元)</li>
+			<li>${$value.earned}</li>
+		</ul>
+	{{/each}}
+	</div>
+</script>
+<script data-tmpl='noticeList' type='text/x-jquery-tmpl'>
+	<p class="zz_txt_6 zz_tip_8">通知<a href="#accountIndex" class="no1 icon-zz-16 zz-ant-1"></a></p>
+    <ul id="noticeListBox" class="zz_list_7">
+		{{each row}}
+		<li data-id="${noticeId}">
+			<p>${noticeTitle}</p>
+			<p>${noticeDate}</p>
+			<p>${noticeContent}</p>
+		</li>
+		{{/each}}
+	</ul>
+	{{if more == 1}}<div class="zz_list_16" id="noticeListMore" data-page=${page}>加载更多</div>{{/if}}
+</script>
+<script data-tmpl='noticeDetail' type='text/x-jquery-tmpl'>
+		<p class="zz_txt_6">通知<a href="#noticeList" class="no1 icon-zz-16"></a></p>
+		<div class="zz_list_8">
+			<div>${noticeTitle}</div>
+			<div>${noticeDate}</div>
+			<div>${noticeContent}</div>
+		</div>
+</script>
+<script data-tmpl='planIndex' type='text/x-jquery-tmpl'>
+	<div class="zz_box_1">
+		<p><i class="icon-zz-1 zz-ant-2"></i>算一算能攒多少钱吧</p>
+		<p>每月定投金额(元)</p>
+		<p class="zz_list_9"><input type="tel" maxlength="5" min="500" max="10000" step="100" id="planMoney" maxlength="5" value="${money}" name="money"/></p>
+		<div class="zz_list_14">
+			<p id="moneyCtr"><i id="moneyBg1"></i><i id="moneyBg2"></i><i id="moneyCtrIco" class="icon-zz-6 zz-ant-1"></i></p>
+			<i id="toLeft" class="icon-zz-4 zz-ant-1"></i><i id="toRight" class="icon-zz-5 zz-ant-1"></i>
+		</div>
+		<p>定投期数(月)<i>过往年化收益率<i id="rate">${rate}</i></i></p>
+		<div class="zz_list_10">
+			<div><span class="zz-ant-1"></span></div>
+			<div id="monthBox"><div><ul>
+			{{each planRate}}
+				<li>${$value.time}</li>
+			{{/each}}
+			</ul></div><i></i></div>
+			<input value="6" type="hidden" name="time" value="4" min="2" max="24" step="2" id="planTime">
+		</div>
+	</div>
+    <p class="zz_btn_1"><a href="javascript:;" id="planIndexBtn">算一算</a></p>
+</script>
+<script data-tmpl='planList' type='text/x-jquery-tmpl'>
+	<div class="zz_box_2">
+		<p><i class="icon-zz-7 zz-ant-1"></i>定投计划</p>
+		<p>预计攒钱总额(元)</p>
+		<p class="zz_tip_7">{{html numToDom(planOutMoney)}}</p>
+		<p>预计可赚金额(元)</p>
+		<p class="zz_tip_7">{{html numToDom(planProfit)}}</p>
+	</div>
+	<div class="zz_list_11">
+		<p>投入总金额(元)</p>
+		<p class="zz_tip_7">${planPutMoney}</p>
+		<p>过往年化收益率</p>
+		<p>${planRate}%</p>
+	</div>
+	<div class="zz_list_12">
+		{{if planTagHot}}
+			<a href="javascript:;" id="planTagBtn" class="hot icon-zz-9">${planTagHot}</a>
+		{{else}}
+			<a href="javascript:;" id="planTagBtn" class="icon-zz-8">添加标签</a>
+		{{/if}}
+	</div>
+	<p class="zz_btn_1 zz_tip_11"><a href="javascript:;" id="planListBtn">下一步</a></p>
+	<p class="zz_tip_6">注：每期按30天测算，且假设每个定投日次日资金能全部推荐给借款人</p>
+	<p class="zz_txt_2"><a href="#planIndex">不理想,重新计算</a></p>
+	<div id="planTag" class="zz_bg_1 none">
+		<div class="zz_list_13">
+			<p>攒够 <i>${planOutMoney}元</i> 做什么?</p>
+			<p>
+			{{each planTag}}
+				<a href="javascript:;" class="icon-zz-9{{if $value.name == planTagHot}} hot{{/if}}">${name}</a>
+			{{/each}}
+			</p>
+		</div>
+	</div>
+	<div id="planListLogin" class="zz_bg_1 none"><div class="zz_list_15"></div><i id="planListLoginBtn" class="icon-zz-10"></i></div>
+</script>
+
+
+
+<!--javascript-->
+<script src="static/js/lib/jquery-2.1.1.min.js"></script>
+<script src="static/js/lib/jquery.mobile.custom.min.js"></script>
+<script src="static/js/plugin/jquery.tmpl.min.js"></script>
+<script src="static/js/restapi.js"></script>
+<script src="static/js/controller.js"></script>
+<script src="static/js/app.js"></script>
+<!--/javascript-->
+</body>
+</html>

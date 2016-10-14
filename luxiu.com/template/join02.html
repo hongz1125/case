@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+    if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+        var version = parseFloat(RegExp.$1);
+        if (version > 2.3) {
+            var phoneScale = parseInt(window.screen.width) / 750;
+            document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+        } else {
+            document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+        }
+    } else {
+        document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+    }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+
+<body>
+<form action="/static/data/api.json" method="post">
+    <section class="lx_join_8">
+        <div class="lx_join_4">申请商务合作</div>
+        <div class="lx_join_5">请填写真实有效信息，以便尽快与您联系</div>
+        <ul class="lx_join_6">
+            <li>
+                <input type="text" placeholder="请输入你的姓名" id="vJoinName" />
+            </li>
+            <li>
+                <input type="text" placeholder="请输入你的手机号"  id="vJoinTel" />
+            </li>
+            <li>
+                <input type="text" placeholder="请输入所在公司" />
+            </li>
+            <li>
+                <input type="text" placeholder="请输入公司职务" />
+            </li>
+        </ul>
+        <div class="lx_join_7">
+            <div></div>
+            <div>期望业务合作内容</div>
+        </div>
+        <ul class="clearfix lx_join_9">
+            <li data-checkbox-li="true">限售股转让
+                <input type="checkbox" name="jointype" />
+            </li>
+            <li data-checkbox-li="true" class="active">定向增发
+                <input type="checkbox" name="jointype" />
+            </li>
+            <li data-checkbox-li="true">大宗交易
+                <input type="checkbox" name="jointype" />
+            </li>
+            <li data-checkbox-li="true">并购
+                <input type="checkbox" name="jointype" />
+            </li>
+        </ul>
+        <input type="text" placeholder="备注" class="lx_join_10" />
+        <div class="lx_join_11" id="joinformbtn">提交</div>
+    </section>
+    </form>
+
+    <section class="lx_join_12" style="display:none;" id="joinformsuccess">
+        <div class="lx_join_13">
+            <div class="lx_join_14">提交成功</div>
+            <div class="lx_join_15">我们会尽快与您取得联系</div>
+            <div class="lx_join_16" data-href="/">确定</div>
+        </div>
+    </section>
+
+</body>
+
+</html>

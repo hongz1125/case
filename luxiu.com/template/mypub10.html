@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+<link rel="stylesheet" href="/static/css/index.css"/>
+<script src="/static/js/jquery.js"></script>
+
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/index.js"></script></head>
+<body>
+
+
+    <header>
+        提交成功
+        <div class="headLf"> <i class="iconfont" data-href="mypub01.html">&#58924;</i>
+        </div>
+    </header>
+
+    <section class="lx_box_1">
+        <div class="lx_place_85"></div>
+
+
+        <div class="lx_list_11">
+            <i class="iconfont Cgreen">&#58904;<i class="iconfont Cwhite">&#58913;</i></i>
+        </div>
+        
+        <div class="tc Cblack">
+            提交成功
+        </div>
+        <div class="tc lx_pis_1 mb40">
+            我们会在1个工作日内完成您投资审核，请耐心等待
+        </div>
+<div class="tc">
+            <div class="lx_btn_3" data-href="mypub01.html">返回首页</div>
+            <div class="lx_btn_3" data-href="mypub06.html">查看发布的项目</div>
+        </div>
+    </section>
+
+
+
+
+
+
+</body>
+</html>

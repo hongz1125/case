@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+<link rel="stylesheet" href="/static/css/index.css"/>
+<script src="/static/js/jquery.js"></script>
+
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/index.js"></script></head>
+<body>
+
+    <header style="height:300px;">
+        <div class="headLf">
+<i class="iconfont" data-href="publish01.html">&#58933;</i>加号
+<i class="iconfont" data-href="search02.html">&#58926;</i> 搜索
+<i class="iconfont" data-href="search01.html">&#58925;</i>筛选
+<i class="iconfont" data-href="project01.html">&#58924;</i>返回
+
+
+        </div>
+    </header>
+
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+        <div class="lx_list_1">
+            <input type="text" class="lx_inp_2" placeholder="请输入手机号"/>
+            <i class="iconfont inputIco inputIcoLf">&#58886;</i>
+            <i class="iconfont inputIco inputIcoRi">&#58890;</i>
+        </div>
+        <div class="lx_list_1 next mb40">
+            <input type="text" class="lx_inp_2" placeholder="请输入密码"/>
+            <i class="iconfont inputIco inputIcoLf">&#58896;</i>
+            <i class="iconfont inputIco inputIcoRi">&#58890;</i>
+        </div>
+        <div class="mb40 tc">
+            <div class="lx_btn_1">登陆</div>
+        </div>
+        <div class="mb40 tc">
+            <a href="#">忘记密码</a>
+            <i class="iconfont">&#58906;</i>
+            <a href="#">快速注册</a>
+        </div>
+
+        <hr />
+        <div class="lx_box_3">
+            <div class="pr">
+                <input type="text" class="lx_inp_1" placeholder="sdfgh" />
+            </div>
+            <div class="lx_line_2"></div>
+            <div class="pr">
+                <input type="text" class="lx_inp_11" placeholder="asdfgsh" />
+                <i class="lx_inp_lf">公司代码</i>
+                <i class="lx_inp_ri">万股</i>
+            </div>
+        </div>
+
+    </section>
+
+
+
+        <div class="lx_box_3 lx_list_4">
+            <ul>
+                <li class="title">已添加附件</li>
+                <li>
+                    <i class="iconfont">&#58899;</i>
+                    北大医药预案
+                    <span>
+                        <i class="iconfont">&#58898;</i> <b class="lx_line_1"></b>
+                        <i class="iconfont ">&#58894;</i>
+                    </span>
+                </li>
+                <li>
+                    <i class="iconfont">&#58899;</i>
+                    北大医药预案
+                    <span>
+                        <i class="iconfont">&#58898;</i> <b class="lx_line_1"></b>
+                        <i class="iconfont">&#58894;</i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="lx_pis_1">我们为你推荐的项目资料</div>
+        <div class="lx_box_3 lx_list_4 mb40">
+            <ul>
+                <li>
+                    <i class="iconfont">&#58899;</i>
+                    北大医药预案
+                    <span>
+                        <i class="iconfont">&#58898;</i>
+                        <b class="lx_line_1"></b>
+                        <i class="iconfont lx_col_b4">&#58900;</i>
+                    </span>
+                </li>
+                <li>
+                    <i class="iconfont">&#58899;</i>
+                    北大医药预案
+                    <span>
+                        <i class="iconfont">&#58898;</i>
+                        <b class="lx_line_1"></b>
+                        <i class="iconfont">&#58888;</i>
+                    </span>
+                </li>
+                <li class="tc lx_col_2">查看更多</li>
+            </ul>
+        </div>
+        <br /><br /><br /><br /><br /><br />
+<hr />
+按钮
+
+        <div class="mb40 tc">
+            <div class="lx_btn_1" data-submit="#form1">登陆</div>
+        </div>
+
+        <div class="tc">
+            <div class="lx_btn_3">取消购买</div>
+            <div class="lx_btn_3">修改购买信息</div>
+        </div>
+
+<hr />
+主题  
+        <div class="mb40 tc">
+            <div class="lx_btn_1" data-submit="#form1">登陆</div>
+        </div>
+
+<hr />
+输入价格
+<div class="lx_box_3">
+    <p class="lx_pis_2">价格</p>
+    <p class="lx_list_5">
+        <span class="active" data-pricetype="#radio01">
+            绝对价格
+            <i class="arrow-up"></i>
+            <i class="arrow-up arrow-up2"></i>
+        </span>
+        <span data-pricetype="#radio02">
+            相对于市价
+            <i class="arrow-up"></i>
+            <i class="arrow-up arrow-up2"></i>
+        </span>
+        <span data-pricetype="#radio03">
+            保密
+        </span>
+    </p>
+    <div class="lx_list_5cont">
+        <input type="hidden" name="priceType" value="0">
+        <div class="pr active" id="radio01">
+            <input type="text" class="lx_inp_1" placeholder="请输入购买价格">
+            <i class="lx_inp_ri">元/股</i>
+        </div>
+        <div class="pr" id="radio02">
+            <input type="text" class="lx_inp_1" placeholder="请输入相对市价">
+            <i class="lx_inp_ri">%</i>
+        </div>
+        <div class="pr" id="radio03">
+        </div>
+    </div>
+</div>
+
+
+    <hr />筛选
+     <div class="lx_box_3">
+            <p class="lx_list_41">
+                行业
+                <span> <i class="Cblue">金融服务</i> <i class="Cblue">金融服务</i>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+            <ul class="lx_list_15 clearfix">
+                <li class="active"><i>金融服务</i></li>
+                <li><i>金融服务2</i></li>
+                <li><i>金融服务3</i></li>
+                <li><i>金融服务4</i></li>
+                <li><i>金融服务5</i></li>
+                <li><i>金融服务6</i></li>
+                <li><i>金融服务7</i></li>
+            </ul>
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41">
+                主题
+                <span>
+                    <i class="Cblue">所有主题</i>
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+        </div>
+
+<hr />
+
+
+<hr />
+微信 绑定 部分代码
+            <div class="lx_line_2"></div>
+            <p class="lx_list_41">
+                微信账户
+                <span>
+                    未绑定
+                    <i class="iconfont lx_ico_2">&#58889;</i>
+                </span>
+            </p>
+
+<hr />
+添加行业 历史
+        <div class="lx_box_3 first">
+            <div class="lx_list_20">
+                <p class="title">已添加行业</p>
+                <ul class="clearfix">
+                    <li class="active">
+                        CDM项目 <i class="iconfont">&#58890;</i>
+                    </li>
+                    <li class="active">
+                        CDM项目1 <i class="iconfont">&#58890;</i>
+                    </li>
+                    <li class="active">
+                        CDM项目2
+                        <i class="iconfont">&#58890;</i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+<hr />
+确认弹框
+    <button onclick="showConfirm('bababab',aaa)">确认弹框</button>
+
+<hr />
+错误提示 demo
+    <button onclick='showTip("登陆失败");'>错误提示</button>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        修改购买信息
+        <div class="headLf"> <i class="iconfont" data-href="myproject04.html">&#58924;</i>
+        </div>
+
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_box_3 lx_list_2 detail">
+            <p class="no7">
+                北大医药 <i>[000788]</i>
+            </p>
+        </div>
+
+        <div class="lx_box_3">
+            <p class="lx_pis_2">价格</p>
+            <p class="lx_list_5">
+                <span class="active" data-pricetype="#radio01">
+                    绝对价格
+                    <i class="arrow-up"></i>
+                    <i class="arrow-up arrow-up2"></i>
+                </span>
+                <span data-pricetype="#radio02">
+                    相对于市价
+                    <i class="arrow-up"></i>
+                    <i class="arrow-up arrow-up2"></i>
+                </span>
+                <span data-pricetype="#radio03">保密</span>
+            </p>
+            <div class="lx_list_5cont">
+                        <input type="hidden" name="priceType" value="0">
+        <div class="pr active" id="radio01">
+                    <input type="text" class="lx_inp_1" placeholder="请输入购买价格">
+                    <i class="lx_inp_ri">元/股</i>
+                </div>
+                <div class="pr" id="radio02">
+                    <input type="text" class="lx_inp_1" placeholder="请输入相对市价">
+                    <i class="lx_inp_ri">%</i>
+                </div>
+                <div class="pr" id="radio03"></div>
+            </div>
+        </div>
+
+        <div class="lx_list_1 mb10">
+            <input type="text" class="lx_inp_4" placeholder="请输入购买数量">
+            <i class="inputTxt inputTxtLf">购买股数</i>
+            <i class="inputTxt inputTxtRi">万股</i>
+        </div>
+        <div class="lx_list_1 mb40">
+            <input type="text" class="lx_inp_1" placeholder="请输入备注"></div>
+        <div class="tc">
+            <div class="lx_btn_1">提交</div>
+        </div>
+    </section>
+
+</body>
+</html>

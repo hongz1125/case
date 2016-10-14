@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>
+        手机登陆
+        <div class="headRi"> <i class="iconfont" data-href="/">&#58890;</i>
+        </div>
+    </header>
+
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+        <form action="/static/data/api.json" data-link="login03.html" method="post">
+            <div class="lx_list_1">
+                <input id="vphone" type="number" maxlength="11" minlength="11" class="lx_inp_2" placeholder="请输入手机号" value="13511111111" /> <i class="iconfont inputIco inputIcoLf">&#58886;</i>
+            </div>
+            <div class="lx_list_1 next mb40">
+                <input id="vpassword" type="password" class="lx_inp_2" maxlength="20" placeholder="请输入密码" value="123456"/>
+                <i class="iconfont inputIco inputIcoLf">&#58931;</i>
+            </div>
+        <div class="mb40 tc">
+            <div class="lx_btn_1" data-ajaxform="true">登陆</div>
+        </div>
+        </form>
+        <div class="mb40 tc">
+            <a href="#">忘记密码</a>
+            <i class="iconfont">&#58906;</i>
+            <a href="#">快速注册</a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        筛选
+        <div class="headLf"> <i class="iconfont" data-href="project01.html">&#58924;</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+        <form id="form1" action="#" method="post">
+            <div class="lx_box_3 mb40">
+                <p class="lx_list_41">
+                    TTM PE
+                    <span class="Cgray"> <i class="lx_list_14"><input type="text" id="vTtmPe1" />
+                            </i> 
+                        —
+                        <i class="lx_list_14"><input type="text" id="vTtmPe2"  />
+                            </i> 
+                    </span>
+                </p>
+                <div class="lx_line_2"></div>
+                <p class="lx_list_41">
+                    价差率
+                    <span class="Cgray">
+                        <i class="lx_list_14">
+                            <input type="text" id="vDiffPrice1"/>
+                            <i>%</i>
+                        </i>
+                        —
+                        <i class="lx_list_14">
+                            <input type="text" id="vDiffPrice2" />
+                            <i>%</i>
+                        </i>
+                    </span>
+                </p>
+
+            </div>
+        </form>
+        <div class="tc">
+            <div class="lx_btn_2" data-submit="#form1">立即筛选</div>
+            <div class="lx_btn_3">重置</div>
+        </div>
+
+    </section>
+
+</body>
+</html>

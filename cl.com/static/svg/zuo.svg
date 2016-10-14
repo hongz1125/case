@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="19px" height="32px" viewBox="0 0 19 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>左箭头 copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="1首页" sketch:type="MSArtboardGroup" transform="translate(-41.000000, -329.000000)" fill="#FFFFFF">
+            <g id="搜索框" sketch:type="MSLayerGroup" transform="translate(0.000000, 95.000000)">
+                <g id="左翻页" transform="translate(0.000000, 200.000000)" sketch:type="MSShapeGroup">
+                    <g id="左箭头-copy-2" transform="translate(50.500000, 50.000000) rotate(-180.000000) translate(-50.500000, -50.000000) translate(41.000000, 34.000000)">
+                        <path d="M18.9504924,16.5525989 L18.9509052,16.553021 L18.893621,16.6071067 L2.89583465,31.9586772 L0.040447321,28.8479334 L13.0763286,16.3386835 L0.943835332,2.91293207 L4.00833596,0.0176866731 L18.9010524,16.4979855 L18.9509052,16.5521767 L18.9504924,16.5525989 Z" id="Shape" transform="translate(9.495676, 15.988182) scale(1, -1) translate(-9.495676, -15.988182) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

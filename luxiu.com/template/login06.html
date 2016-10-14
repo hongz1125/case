@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+<link rel="stylesheet" href="/static/css/index.css"/>
+<script src="/static/js/jquery.js"></script>
+
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/index.js"></script>
+</head>
+<body>
+    
+
+
+
+
+
+    
+    <header>
+        找回密码
+        <div class="headRi"><i class="iconfont">&#58890;</i></div>
+    </header>
+
+
+
+
+
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+        <div class="lx_pis_1">请输入有效的手机号码</div>
+        <form action="/static/data/api.json" method="post" data-link="login07.html">
+        <div class="lx_list_1">
+            <input type="number" class="lx_inp_1" placeholder="请输入手机号" id="vphone" value="13511111111" maxlength="11"/>
+        </div>
+        <div class="lx_list_1 next mb40">
+            <input type="number" class="lx_inp_3" placeholder="请输入验证码" id="vvalidate" maxlength="6" value="111111" />
+            <i class="getVali" id="getVali" data-backtime="60">获取验证码</i>
+            <i class="getVali time hide"></i>
+        </div>
+        <div class="tc">
+            <div class="lx_btn_1" data-ajaxform="true">下一步</div>
+        </div>
+        </form>
+    </section>
+
+
+
+</body>
+</html>

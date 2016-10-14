@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>
+        我
+        <div class="headLf"> <i class="iconfont" data-href="message01.html">&#58924;</i>
+        </div>
+    </header>
+    <section class="lx_box_1" data-message-content="true">
+        <div class="lx_place_20"></div>
+        <form action="../static/data/message_list.json" method="post">
+            <div class="lx_list_21 active" data-message-list="true" data-autoclick="true">
+                <input type="hidden" name="historyMessageId" value="2" />
+                点击加载更多历史消息
+            </div>
+        </form>
+        <div class="lx_place_20"></div>
+<!--         <div class="lx_list_16">
+            <p>您的信息不准确，需要重新审查提交更新注意上传名片保证名片清晰已读。</p>
+            <img src="/static/images/lx_1.png" /> <i class="arrow"></i>
+            <i class="arrow arrow2"></i>
+        </div>
+        <div class="lx_list_16">
+            <p>您的信晰已读。</p>
+            <img src="/static/images/lx_1.png" />
+            <i class="arrow"></i>
+            <i class="arrow arrow2"></i>
+        </div>
+        <div class="lx_list_17">今天 16:00</div>
+        <div class="lx_list_16 user">
+            <p>您的信息不准确，需要重新审查提交更新注意上传名片保证名片清晰已读。</p>
+            <img src="/static/images/lx_1.png" />
+            <i class="arrow"></i>
+            <i class="arrow arrow2"></i>
+        </div>
+        <div class="lx_list_17">今天 16:00</div>
+        <div class="lx_list_16 user">
+            <p>您的信息不晰已读。</p>
+            <img src="/static/images/lx_1.png" />
+            <i class="arrow"></i>
+            <i class="arrow arrow2"></i>
+        </div> -->
+        <form action="/static/data/message_auto.json" method="post" data-auto-ajax="5000">
+            <input type="hidden" name="lasteestMessageId" value="1234556" />
+        </form>
+    </section>
+    <hr id="last" class='line'/>
+    <form action="/static/data/message_send.json" method="post">
+        <footer class="lx_foot_3" data-message-box="true">
+            <div class="lx_list_18 hide">
+                <i class="fl Cblack" data-message-close="true">取消</i>
+                <i class="fr Cblue" data-message-send="true">发送</i>
+            </div>
+            <textarea class="lx_inp_5" placeholder="回复：" id="vUserMessage"  data-message-input="true"></textarea>
+        </footer>
+    </form>
+</body>
+</html>

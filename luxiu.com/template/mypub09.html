@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        <div class="headUp">北大医药</div>
+        <div class="headDown">[000788]</div>
+        <div class="headLf"> <i class="iconfont" data-href="mypub01.html">&#58924;</i>
+        </div>
+    </header>
+
+    <section class="lx_box_1">
+        <div class="lx_box_3 lx_list_2 detail">
+            <p class="no31">
+                5.91 <i>元/股</i>
+            </p>
+            <p class="no32">卖出价格</p>
+            <p class="no41">8000万股</p>
+            <p class="no42">卖出数量</p>
+            <p class="no51">15个月</p>
+            <p class="no52">剩余限售期</p>
+        </div>
+        <div class="lx_box_3 lx_list_3">
+            <ul>
+                <li>基本信息</li>
+                <li>
+                    <span>申万行业</span>
+                    采掘 - 其他采掘
+                </li>
+                <li>
+                    <span>
+                        主题
+                        <i class="iconfont" data-tip="我是tip 我是tip tip tip tip"></i>
+                    </span>
+                    智慧矿业
+                </li>
+                <li class="lx_col_3">
+                    <span>股票最新价</span>
+                    7.10元/股
+                </li>
+                <li class="lx_col_3">
+                    <span>价差率</span>
+                    5.12%
+                </li>
+                <li>
+                    <span>静态PE</span>
+                    80.00
+                </li>
+                <li>
+                    <span>TTM PE</span>
+                    70.00
+                </li>
+                <li>
+                    <span>动态 PE</span>
+                    86.00
+                </li>
+                <li>
+                    <span>市净率</span>
+                    6.0
+                </li>
+                <li>
+                    <span>备注</span>
+                    请与我联系,电话：13
+                    <br>812899831</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer class="lx_foot_2">
+        <span class="btn03">下架审核中</span>
+    </footer>
+
+</body>
+</html>

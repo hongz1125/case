@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        收益权转让
+        <div class="headLf"> <i class="iconfont" data-href="publish02.html">&#58933;</i>
+        </div>
+        <div class="headRi"> <i class="iconfont" data-href="search02.html">&#58926;</i>
+            <i class="iconfont" data-href="search01.html">&#58925;</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_place_1"></div>
+<!--         <div class="lx_box_3 lx_list_2" data-href="project02.html">
+            <p class="no1">
+                北大医药
+                <i>[000788]</i>
+            </p>
+            <p class="no2">医药制造业 - 三级行业</p>
+            <p class="no31">
+                5.91
+                <i>元/股</i>
+            </p>
+            <p class="no32">卖出价格</p>
+            <p class="no41">8000万股</p>
+            <p class="no42">卖出数量</p>
+            <p class="no51">15个月</p>
+            <p class="no52">剩余限售期</p>
+            <p class="no6 follow active" data-follow="121">
+                <i class="iconfont isfollow">&#58908;</i>
+                <i class="iconfont lx_col_2 nofollow">&#58909;</i>
+            </p>
+        </div>
+        <div class="lx_box_3 lx_list_2" data-href="project02.html">
+            <p class="no1">
+                北大医药
+                <i>[000788]</i>
+            </p>
+            <p class="no2">医药制造业 - 三级行业</p>
+            <p class="no31">
+                5.91
+                <i>元/股</i>
+            </p>
+            <p class="no32">卖出价格</p>
+            <p class="no41">8000万股</p>
+            <p class="no42">卖出数量</p>
+            <p class="no51">15个月</p>
+            <p class="no52">剩余限售期</p>
+            <p class="no6 follow" data-follow="121">
+                <i class="iconfont isfollow">&#58908;</i>
+                <i class="iconfont lx_col_2 nofollow">&#58909;</i>
+            </p>
+        </div>
+ -->
+        <div class="lx_list_21 active" data-ajaxpage="true" data-autoclick="true">
+            <form action="../static/data/moreTranferList.json" method="post">
+                <input type="hidden" name="nextPageNo" value="2" />
+                <input type="hidden" name="pageSize" value="1" />
+                <input type="hidden" name="otherparam" value="bababa" />
+                点击加载更多
+            </form>
+        </div>
+
+    </section>
+
+<!--底部菜单 已这个为准-->
+    <footer class="lx_foot_1">
+        <span class="active" data-href="project01.html">
+            <i class="iconfont">&#58929;</i>
+            <p>项目</p>
+        </span>
+        <span data-href="myproject01.html">
+            <i class="iconfont">&#58928;</i>
+            <p>我的项目</p>
+        </span>
+        <span data-href="message01.html">
+            <i class="iconfont">&#58930;</i>
+            <p>消息</p>
+            <i class="lx_ico_3"></i>
+        </span>
+        <span data-href="self01.html">
+            <i class="iconfont">&#58927;</i>
+            <p>我</p>
+        </span>
+    </footer>
+<!--/底部菜单 已这个为准-->
+
+
+</body>
+</html>

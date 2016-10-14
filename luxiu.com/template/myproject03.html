@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750,minimum-scale=' + phoneScale + ',maximum-scale=' + phoneScale + ',target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750,target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no,minimal-ui">');
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--移动端兼容适配 -->
+    <title>鹿秀金融</title>
+    <link rel="stylesheet" href="/static/css/animate.min.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="/static/js/jquery.js"></script>
+
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+    <header>
+        完成的项目
+        <div class="headRi"> <i class="fs30" data-href="mypub01.html">发布的项目</i>
+        </div>
+    </header>
+    <section class="lx_box_1">
+        <div class="lx_tab_1">
+            <span data-href="myproject01.html"> <b>关注的项目</b>
+            </span>
+            <span data-href="myproject02.html"> <b>参中与的项目</b>
+            </span>
+            <span data-href="myproject03.html" class="active">
+                <b>完成的项目</b>
+            </span>
+        </div>
+        <div class="lx_box_3 lx_list_6" data-href="myproject07.html">
+            <p class="no1">
+                北大医药 <i>[000788]</i>
+            </p>
+            <p class="no2 lx_col_6">交易成功</p>
+            <p class="no3">
+                购买价格&nbsp;&nbsp;
+                <i class="lx_pic_4"><b>5.91</b>
+                    <b>元/股</b></i> 
+            </p>
+            <p class="no4">
+                购买数量&nbsp;&nbsp;
+                <i class="lx_pic_4"><b>800</b>
+                    <b>万股</b></i> 
+            </p>
+        </div>
+        <div class="lx_box_3 lx_list_6" data-href="myproject08.html">
+            <p class="no1">
+                北大医药
+                <i>[000788]</i>
+            </p>
+            <p class="no2 lx_col_5">交易失败</p>
+            <p class="no3">
+                购买价格&nbsp;&nbsp;
+                <i class="lx_pic_4">
+                    <b class="lx_col_b3">5.91</b>
+                    <b class="lx_col_b3">元/股</b>
+                </i>
+            </p>
+            <p class="no4">
+                购买数量&nbsp;&nbsp;
+                <i class="lx_pic_4">
+                    <b class="lx_col_b3">800</b>
+                    <b class="lx_col_b3">万股</b>
+                </i>
+            </p>
+        </div>
+        <div class="lx_box_3 lx_list_6" data-href="myproject09.html">
+            <p class="no1">
+                北大医药
+                <i>[000788]</i>
+            </p>
+            <p class="no2 lx_col_b4">交易取消</p>
+            <p class="no3">
+                购买价格&nbsp;&nbsp;
+                <i class="lx_pic_4">
+                    <b class="lx_col_b3">5.91</b>
+                    <b class="lx_col_b3">元/股</b>
+                </i>
+            </p>
+            <p class="no4">
+                购买数量&nbsp;&nbsp;
+                <i class="lx_pic_4">
+                    <b class="lx_col_b3">800</b>
+                    <b class="lx_col_b3">万股</b>
+                </i>
+            </p>
+        </div>
+    </section>
+
+
+    <footer class="lx_foot_1">
+        <span data-href="project01.html">
+            <i class="iconfont">&#58884;</i>
+            <p>项目</p>
+        </span>
+        <span class="active" data-href="myproject01.html">
+            <i class="iconfont">&#58910;</i>
+            <p>我的项目</p>
+        </span>
+        <span data-href="message01.html">
+            <i class="iconfont">&#58885;</i>
+            <p>消息</p>
+        </span>
+        <span data-href="self01.html">
+            <i class="iconfont">&#58886;</i>
+            <p>我</p>
+        </span>
+    </footer>
+
+</body>
+</html>
