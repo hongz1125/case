@@ -1,0 +1,35 @@
+@import 'normalize.scss';
+@import 'mixin.scss';
+.exh{
+  display: flex;
+  &__nav{
+    width:180px;
+    background: #eee;
+    flex-shrink:0;
+    ul{
+      padding-top:155px;
+    }
+    li{
+      height:140px;
+      color:#616161;
+      &.active{
+        background:#3380ba;
+        color:#fff;
+      }
+      h3{
+        font-family: 'iconfont';
+        font-size:50px;
+      }
+    }
+  }
+  &__secNav{
+    width:270px;
+    background: #ffa;
+    flex-shrink:0;
+  }
+  &__cont{
+    background: #aaf;
+    width: 100%;
+    min-width: 1460px;
+  }
+}
