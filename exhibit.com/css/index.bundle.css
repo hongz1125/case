@@ -470,6 +470,24 @@ body {
   color: #fff;
 }
 
+.exh__nav li.active a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.exh__nav li.active a:hover {
+  color: #fff;
+}
+
+.exh__nav li a {
+  color: #616161;
+  text-decoration: none;
+}
+
+.exh__nav li a:hover {
+  color: #616161;
+}
+
 .exh__nav li h3 {
   font-family: 'iconfont';
   font-size: 65px;

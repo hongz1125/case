@@ -19,6 +19,21 @@
       &.active {
         background: #3380ba;
         color: #fff;
+
+        a{
+          color:#fff;
+          text-decoration: none;
+          &:hover{
+            color:#fff;
+          }
+        }
+      }
+      a{
+        color:#616161;
+        text-decoration: none;
+        &:hover{
+          color:#616161;
+        }
       }
       h3 {
         font-family: 'iconfont';
