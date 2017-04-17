@@ -28,3 +28,5 @@
   
        - [01购物](shopping/01.html)
        - [02购物](shopping/02.html)
+       
+[我的博客](http://blog.csdn.net/guodongxiaren "悬停显示")
