@@ -438,37 +438,41 @@ body {
     background: #2b2b2b;
     -ms-flex-negative: 0;
         flex-shrink: 0; }
+    .exh__secNav a {
+      text-decoration: none;
+      color: #fff; }
     .exh__secNav li {
       border-bottom: 1px solid #777;
       padding-left: 37px;
       padding-right: 37px;
       overflow: hidden;
-      height: 250px;
-      padding-top: 64px; }
-      .exh__secNav li:hover {
-        background: #303030; }
-        .exh__secNav li:hover h3:after {
-          border-bottom: 1px solid #303030; }
-      .exh__secNav li:nth-child(2n) h3:after {
-        display: none; }
-      .exh__secNav li h3 {
-        text-align: center;
+      height: 250px; }
+      .exh__secNav li:hover, .exh__secNav li.active {
+        background: #616161; }
+        .exh__secNav li:hover a h3, .exh__secNav li.active a h3 {
+          color: #fff; }
+        .exh__secNav li:hover a h5, .exh__secNav li.active a h5 {
+          color: #fff; }
+      .exh__secNav li h3.shopping {
+        padding-top: 70px;
+        font-weight: normal;
+        text-align: left;
+        font-size: 70px;
+        text-indent: -10px;
         color: #777;
         margin-bottom: 10px;
-        border: 1px solid #777;
         width: 120px;
         line-height: 58px;
-        position: relative; }
-        .exh__secNav li h3:after {
-          content: '';
-          border: 1px solid #777;
-          width: 28px;
-          height: 28px;
-          box-sizing: border-box;
-          border-bottom: 1px solid #2b2b2b;
-          position: absolute;
-          right: -1px;
-          top: -28px; }
+        position: relative;
+        font-family: 'iconfont'; }
+      .exh__secNav li h3.plan {
+        height: 120px;
+        line-height: 100px;
+        margin-bottom: 10px;
+        padding-top: 20px; }
+        .exh__secNav li h3.plan img {
+          line-height: 100px;
+          vertical-align: middle; }
       .exh__secNav li h4 {
         font-size: 21px;
         color: #fff;
@@ -537,6 +541,26 @@ body {
     .exh__textList table td {
       padding: 10px 0;
       text-align: left; }
+
+.exh__textList2 {
+  background: #fcfcfc;
+  padding: 140px 90px; }
+  .exh__textList2 table {
+    border: 0;
+    width: 100%;
+    border-collapse: collapse; }
+    .exh__textList2 table td {
+      padding: 10px 0;
+      text-align: left; }
+    .exh__textList2 table th {
+      font-weight: bold;
+      padding: 10px 0;
+      vertical-align: top;
+      text-align: left;
+      width: 60px; }
+    .exh__textList2 table .title {
+      font-size: 25px;
+      padding-bottom: 20px; }
 
 .exh__page {
   color: #777777;

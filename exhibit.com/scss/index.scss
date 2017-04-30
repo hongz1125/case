@@ -19,20 +19,19 @@
       &.active {
         background: #3380ba;
         color: #fff;
-
-        a{
-          color:#fff;
+        a {
+          color: #fff;
           text-decoration: none;
-          &:hover{
-            color:#fff;
+          &:hover {
+            color: #fff;
           }
         }
       }
-      a{
-        color:#616161;
+      a {
+        color: #616161;
         text-decoration: none;
-        &:hover{
-          color:#616161;
+        &:hover {
+          color: #616161;
         }
       }
       h3 {
@@ -53,46 +52,46 @@
     width: 270px;
     background: #2b2b2b;
     flex-shrink: 0;
+    a{
+      text-decoration: none;
+      color:#fff;
+    }
     li {
       border-bottom: 1px solid #777;
       padding-left: 37px;
       padding-right: 37px;
       overflow: hidden;
       height: 250px;
-      padding-top: 64px;
-      &:hover {
-        background: #303030;
-        h3 {
-          &:after {
-            border-bottom: 1px solid #303030;
-          }
+      &:hover,&.active {
+        background: #616161;
+        a h3{
+          color:#fff;
+        }
+        a h5{
+          color:#fff;
         }
       }
-      &:nth-child(2n) {
-        h3 {
-          &:after {
-            display: none;
-          }
-        }
-      }
-      h3 {
-        text-align: center;
+      h3.shopping {
+        padding-top: 70px;
+        font-weight: normal;
+        text-align: left;
+        font-size: 70px;
+        text-indent: -10px;
         color: #777;
         margin-bottom: 10px;
-        border: 1px solid #777;
         width: 120px;
         line-height: 58px;
         position: relative;
-        &:after {
-          content: '';
-          border: 1px solid #777;
-          width: 28px;
-          height: 28px;
-          box-sizing: border-box;
-          border-bottom: 1px solid #2b2b2b;
-          position: absolute;
-          right: -1px;
-          top: -28px;
+        font-family: 'iconfont';
+      }
+      h3.plan {
+        height: 120px;
+        line-height: 100px;
+        margin-bottom: 10px;
+        padding-top:20px;
+        img {
+          line-height: 100px;
+          vertical-align: middle;
         }
       }
       h4 {
@@ -181,6 +180,31 @@
   }
 }
 
+.exh__textList2{
+  background: #fcfcfc;
+  padding: 140px 90px;
+  table {
+    border: 0;
+    width: 100%;
+    border-collapse: collapse;
+    td {
+      padding: 10px 0;
+      text-align: left;
+    }
+    th{
+      font-weight: bold;
+      padding: 10px 0;
+      vertical-align: top;
+      text-align: left;
+      width:60px;
+    }
+    .title{
+      font-size:25px;
+      padding-bottom:20px;
+    }
+  }
+}
+
 .exh__page {
   color: #777777;
   text-align: center;
@@ -209,7 +233,7 @@
     padding: 100px 60px;
     height: 840px;
     position: relative;
-      text-align: center;
+    text-align: center;
     a {
       color: #fff;
     }
@@ -227,52 +251,52 @@
     }
   }
   &__right {
-      p{
-        margin: 20px 0;
-      }
+    p {
+      margin: 20px 0;
+    }
     padding-top: 100px;
     padding-right: 100px;
-    &__title{
-      position:relative;
-      padding-top:20px;
-      padding-left:250px;
-      font-size:28px;
+    &__title {
+      position: relative;
+      padding-top: 20px;
+      padding-left: 250px;
+      font-size: 28px;
       line-height: 40px;
-      height:130px;
-      h2{
-        position:absolute;
-        left:0;
+      height: 130px;
+      h2 {
+        position: absolute;
+        left: 0;
         font-size: 48px;
-        top:10px;
-        line-height:90px;
-        border-right:2px solid #4e4c4b;
-        width:200px;
+        top: 10px;
+        line-height: 90px;
+        border-right: 2px solid #4e4c4b;
+        width: 200px;
         font-weight: bold;
       }
     }
-    h3{
-      font-size:28px;
+    h3 {
+      font-size: 28px;
       font-weight: bold;
       line-height: 40px;
       font-family: 'Microsoft Yahei'
     }
-    h4{
-      font-size:28px;
+    h4 {
+      font-size: 28px;
       font-weight: bold;
       line-height: 40px;
     }
   }
 }
 
-.exh__traffic{
-  p{
-    margin:30px 0;
-    line-height:44px;
-    b{
+.exh__traffic {
+  p {
+    margin: 30px 0;
+    line-height: 44px;
+    b {
       font-weight: bold;
     }
-    em{
-      color:#e60012;
+    em {
+      color: #e60012;
       font-style: normal;
     }
   }
