@@ -460,15 +460,15 @@ body {
         .exh__secNav li:hover a h5, .exh__secNav li.active a h5 {
           color: #fff; }
       .exh__secNav li h3.shopping {
-        padding-top: 30px;
+        padding-top: 50px;
         font-weight: normal;
         text-align: left;
-        font-size: 30px;
-        text-indent: -5px;
+        font-size: 40px;
+        text-indent: -10px;
         color: #777;
         margin-bottom: 10px;
         width: 120px;
-        line-height: 58px;
+        line-height: 26px;
         position: relative;
         font-family: 'iconfont'; }
       .exh__secNav li h4.shopping {
