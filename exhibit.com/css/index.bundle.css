@@ -553,7 +553,8 @@ body {
 
 .exh__textList2 {
   background: #fcfcfc;
-  padding: 90px 60px; }
+  padding: 90px 60px;
+  font-size: 14px; }
   .exh__textList2 table {
     border: 0;
     width: 100%;
@@ -568,8 +569,10 @@ body {
       text-align: left;
       width: 60px; }
     .exh__textList2 table .title {
-      font-size: 20px;
+      font-size: 14px;
       padding-bottom: 20px; }
+    .exh__textList2 table tr:nth-child(even) {
+      border-bottom: 1px solid #ddd; }
 
 .exh__page {
   color: #777777;
