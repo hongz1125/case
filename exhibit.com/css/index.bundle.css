@@ -590,8 +590,8 @@ body {
   .exh__detail__left {
     -ms-flex-negative: 0;
         flex-shrink: 0;
-    width: 420px;
-    padding: 100px 60px;
+    width: 220px;
+    padding: 50px 30px;
     height: 840px;
     position: relative;
     text-align: center; }
