@@ -7,8 +7,15 @@
     background: #fff;
     flex-shrink: 0;
     overflow-y:auto;
+    position:relative;
     ul {
       padding-top: 100px;
+      position:fixed;
+      left:0;
+      top:0;
+      bottom:0;
+      width:120px;
+      overflow-y:auto;
     }
     li {
       height: 90px;

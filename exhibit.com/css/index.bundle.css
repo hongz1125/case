@@ -402,9 +402,16 @@ body {
     background: #fff;
     -ms-flex-negative: 0;
         flex-shrink: 0;
-    overflow-y: auto; }
+    overflow-y: auto;
+    position: relative; }
     .exh__nav ul {
-      padding-top: 100px; }
+      padding-top: 100px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      overflow-y: auto; }
     .exh__nav li {
       height: 90px;
       box-sizing: border-box;
