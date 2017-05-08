@@ -233,27 +233,33 @@
 }
 
 .exh__detail {
-  display: flex;
+  position:relative;
+  padding-left:220px;
   &__left {
-    flex-shrink: 0;
     width: 220px;
     padding: 50px 30px;
     height: 840px;
-    position: relative;
+    position: absolute;
+    left:0;
+    top:0;
     text-align: center;
+    box-sizing:border-box;
     a {
       color: #fff;
+    }
+    img{
+      width:160px;
     }
     &__nav {
       position: absolute;
       background: #2b2b2b;
-      width: 140px;
-      line-height: 55px;
-      font-size: 30px;
+      width: 70px;
+      line-height: 35px;
+      font-size: 16px;
       color: #fff;
-      bottom: 0;
+      bottom: 10px;
       left: 50%;
-      margin-left: -70px;
+      margin-left: -35px;
       border-radius: 10px;
     }
   }
@@ -261,36 +267,39 @@
     p {
       margin: 20px 0;
     }
-    padding-top: 100px;
-    padding-right: 100px;
+    padding-top: 50px;
+    padding-right: 50px;
+    img{
+      width:700px;
+    }
     &__title {
       position: relative;
-      padding-top: 20px;
-      padding-left: 250px;
-      font-size: 28px;
-      line-height: 40px;
-      height: 130px;
+      padding-top: 10px;
+      padding-left: 150px;
+      font-size: 18px;
+      line-height: 20px;
+      height: 100px;
       h2 {
         position: absolute;
         left: 0;
-        font-size: 48px;
+        font-size: 36px;
         top: 10px;
-        line-height: 90px;
+        line-height: 60px;
         border-right: 2px solid #4e4c4b;
-        width: 200px;
+        width: 130px;
         font-weight: bold;
       }
     }
     h3 {
-      font-size: 28px;
+      font-size: 18px;
       font-weight: bold;
-      line-height: 40px;
+      line-height: 26px;
       font-family: 'Microsoft Yahei'
     }
     h4 {
-      font-size: 28px;
+      font-size: 18px;
       font-weight: bold;
-      line-height: 40px;
+      line-height: 26px;
     }
   }
 }
@@ -312,4 +321,11 @@
 
 .big_pic{
   width:860px;
+}
+.error{
+  padding:20px;
+  i{
+    font-style:normal;
+    padding:0 5px;
+  }
 }
