@@ -1,16 +1,12 @@
 @import 'normalize.scss';
 @import 'mixin.scss';
 .exh {
-  display: relative;
-  padding-left:300px;
+  display: flex;
   &__nav {
     width: 120px;
     background: #fff;
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    overflow-y:scroll;
+    flex-shrink: 0;
+    overflow-y:auto;
     ul {
       padding-top: 100px;
     }
@@ -57,11 +53,8 @@
   &__secNav {
     width: 180px;
     background: #2b2b2b;
-    position:fixed;
-    left:120px;
-    top:0;
-    bottom:0;
-    overflow-y:scroll;
+    flex-shrink: 0;
+    overflow-y:auto;
     a{
       text-decoration: none;
       color:#fff;
@@ -116,6 +109,7 @@
   &__cont {
     position:relative;
     overflow-x:hidden;
+    width:100%;
     color: #595757;
     a {
       color: #595757;

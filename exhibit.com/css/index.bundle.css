@@ -394,16 +394,15 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 .exh {
-  display: relative;
-  padding-left: 300px; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
   .exh__nav {
     width: 120px;
     background: #fff;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    overflow-y: scroll; }
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow-y: auto; }
     .exh__nav ul {
       padding-top: 100px; }
     .exh__nav li {
@@ -439,11 +438,9 @@ body {
   .exh__secNav {
     width: 180px;
     background: #2b2b2b;
-    position: fixed;
-    left: 120px;
-    top: 0;
-    bottom: 0;
-    overflow-y: scroll; }
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow-y: auto; }
     .exh__secNav a {
       text-decoration: none;
       color: #fff; }
@@ -488,6 +485,7 @@ body {
   .exh__cont {
     position: relative;
     overflow-x: hidden;
+    width: 100%;
     color: #595757; }
     .exh__cont a {
       color: #595757;
