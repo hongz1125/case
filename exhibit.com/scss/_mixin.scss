@@ -25,14 +25,14 @@ body {
   font-weight: normal;
 }
 
-@font-face {
-  font-family: 'iconfont';  /* project id 276874 */
-  src: url('//at.alicdn.com/t/font_ur50hyqfne94quxr.eot');
-  src: url('//at.alicdn.com/t/font_ur50hyqfne94quxr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_ur50hyqfne94quxr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_ur50hyqfne94quxr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_ur50hyqfne94quxr.svg#iconfont') format('svg');
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1494286800496'); /* IE9*/
+  src: url('iconfont.eot?t=1494286800496#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1494286800496') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1494286800496') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1494286800496#iconfont') format('svg'); /* iOS 4.1- */
 }
+
 .iconfont {
   font-family:"iconfont" !important;
   font-size:16px;
