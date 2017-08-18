@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>404</title>
+  <link rel="stylesheet" href="../css/index.bundle.css" />
+  <script src="../js/index.js"></script>
+</head>
+
+<body>
+<div class="error">
+出错了,<i id="time">5</i>秒返回。
+</div>
+<script type="text/javascript"> 
+	var t = 5; 
+	function countDown(){ 
+		var time = document.getElementById("time"); 
+		t--; 
+		time.innerHTML=t; 
+		if (t<=0) { 
+			location.href="./plan/01.html"; 
+			clearInterval(inter); 
+		}; 
+	} 
+	var inter = setInterval("countDown()",1000); 
+</script> 
+
+</body>
+
+</html>
