@@ -1,0 +1,52 @@
+.ux_head{
+  height: 50px;
+  background: #373d41;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.ux_left{
+  position: fixed;
+  width: 180px;
+  background: #293038;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+}
+.ux_body{
+  position: fixed;
+  left: 195px;
+  top: 65px;
+  bottom: 0;
+  right: 15px;
+  overflow: auto;
+}
+.ux_login{
+  padding: 20px;
+  width: 500px;
+  margin: auto;
+}
+.ux_page{
+  padding: 10px 0;
+  text-align: right;
+}
+.el-tag{margin-right:10px;}
+
+
+
+
+
+
+
+
+.ux_head,
+.ux_left,
+/* .ux_body, */
+.ux_page{
+  display: none;
+}
+
+
+
+

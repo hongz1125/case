@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <title>admin</title>
+  <link rel="stylesheet" href="/static/base/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/admin/index.css" />
+  <script src="/static/base/js/jquery.min.js"></script>
+  <script src="/static/base/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<section class="ux_login">
+  
+<form class="form-horizontal" active="./" method="post">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="Email" name="username" value="admin">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" value="admin!@#">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default uxjs_submit">登陆</button>
+    </div>
+  </div>
+</form>
+
+</section>
+
+
+<script>
+  $(function(){
+    $(document).on('click','.uxjs_submit',function(){
+      $.post(
+        "/api/login",
+        {
+          username:$('[name=username]').val(),
+          password:$('[name=password]').val()
+        },
+        function(res){
+          res = JSON.parse(res);
+          console.log(res);
+          if(res.code == 0){
+              window.location.assign('/admin');
+          }else{
+            alert(res.msg);
+          }
+        }
+      )
+    })
+
+  })
+
+</script>
+
+
+</body>
+
+</html>
