@@ -21,10 +21,10 @@ var upload = multer({ storage: storage })
 var mysql = require('mysql');
 var pool  = mysql.createPool({
   connectionLimit : 10,
-  host : '127.0.0.1',
+  host : '121.40.37.200',
   user : 'root',
-  password : 'root',
-  database : 'u_expo'
+  password : 'Hongz1126',
+  database : 'u-expo'
 });
 
 //---------------
@@ -133,7 +133,7 @@ router.post('/case/detail',function(req, res, next){
 })
 
 //---------获取单条 保存
-router.post('/case/save',function(req, res, next){
+router.post('/case/edit',function(req, res, next){
   let query = {},param = {data:{},code:0};
   query.id = req.body.id;
   query.cn_name = req.body.cn_name;
@@ -149,7 +149,14 @@ router.post('/case/save',function(req, res, next){
     save_case: function(callback) {
       if(query.id){
         let sql = `UPDATE \`case\` SET 
-          \`cn_name\` = '${query.cn_name}' 
+          \`cn_name\` = '${query.cn_name}' ,
+          \`en_name\` = '${query.en_name}' ,
+          \`custom\` = '${query.custom}' ,
+          \`city\` = '${query.city}' ,
+          \`start_time\` = '${query.start_time}' ,
+          \`end_time\` = '${query.end_time}' ,
+          \`dateline\` = '${+new Date()}' ,
+          \`pic\` = '${query.pic}' 
           WHERE \`id\` = '${query.id}'`;
         pool.query(sql, function(err, result) {
           callback(err);
@@ -183,6 +190,27 @@ router.post('/case/save',function(req, res, next){
         callback(err);
       });
     },
+  }
+  async.series(tasks, function(err, results) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(param);
+    }
+  });
+})
+
+//项目 删除
+router.post('/case/del',function(req, res, next){
+  let query = {},param = {data:{},code:0};
+  query.id = req.body.id;
+  let tasks = {
+    del_case: function(callback) {
+        let sql = `DELETE FROM \`case\` WHERE \`id\` IN ('${query.id}')`;
+        pool.query(sql, function(err, result) {
+          callback(err);
+        });
+    }
   }
   async.series(tasks, function(err, results) {
     if(err) {

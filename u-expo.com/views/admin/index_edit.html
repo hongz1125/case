@@ -1,12 +1,13 @@
 <section id="app">
     {{> head}} {{> left}}
-    <section class="ux_body">
+    <section class="ux_body"  v-loading.fullscreen.lock="loading">
         <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>项目列表</el-breadcrumb-item>
-            <el-breadcrumb-item>新增项目</el-breadcrumb-item>
+            <el-breadcrumb-item v-if="!is_edit">新增项目</el-breadcrumb-item>
+            <el-breadcrumb-item v-else>编辑项目</el-breadcrumb-item>
         </el-breadcrumb>
-        <el-form ref="form" :model="form" label-width="160px" style="width:600px">
+        <el-form ref="form" :model="form" label-width="160px" style="width:800px">
             <el-form-item label="活动中文名">
                 <el-input v-model="form.cn_name"></el-input>
             </el-form-item>
@@ -14,10 +15,11 @@
                 <el-input v-model="form.en_name"></el-input>
             </el-form-item>
             <el-form-item label="客户">
-                <el-input v-model="form.en_name"></el-input>
+                <el-input v-model="form.custom" style="width:200px"></el-input>
             </el-form-item>
-            <el-form-item label="分类">
+            <el-form-item label="标签">
               <el-autocomplete v-model="tag_keyword" :fetch-suggestions="on_search_tag" :trigger-on-focus="false" placeholder="添加标签" @select="on_select_tag"></el-autocomplete>
+              <el-button @click="on_add_tag" type="primary">添加</el-button>
               <div>
                   <el-tag v-for="tag in form.tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
                       \{{tag.value}}
@@ -29,7 +31,7 @@
                 </el-date-picker>
             </el-form-item>
             <el-form-item label="城市">
-                <el-input v-model="form.city"></el-input>
+                <el-input v-model="form.city" style="width:200px"></el-input>
             </el-form-item>
             <el-form-item label="图片上传">
               <el-upload
@@ -38,29 +40,15 @@
                 :on-preview="on_pic_show"
                 :on-remove="on_pic_remove"
                 :file-list="list_pic"
-                list-type="picture">
-                <el-button size="small" type="primary">点击上传</el-button>
-                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb;<br />请上传 大于或等于 4张大图；大小为613px * 413px</div>
+                list-type="picture-card">
+                <i class="el-icon-plus"></i>
               </el-upload>
+                <div>只能上传jpg/png文件，且不超过500kb;请上传 大于或等于 4张大图；大小为613px * 413px</div>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="on_save">保存</el-button>
-                <el-button>取消</el-button>
+                <el-button @click="window.location.assign('/admin')">返回</el-button>
             </el-form-item>
-        </el-form>
-    </section>
-    <section>
-        <el-form ref="form" :model="form" label-width="160px" style="width:600px">
-            <el-form-item label="11">
-                <el-input v-model="form.cn_name"></el-input>
-            </el-form-item>
-            <el-autocomplete v-model="tag_keyword" :fetch-suggestions="on_search_tag" :trigger-on-focus="false" placeholder="添加标签" @select="on_select_tag"></el-autocomplete>
-            <div>
-              <el-tag v-for="tag in form.tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
-                  \{{tag.value}}
-              </el-tag>
-            </div>
-            <el-button type="primary" @click="on_save">保存表单</el-button>
         </el-form>
     </section>
 </section>
@@ -68,6 +56,7 @@
 new Vue({
     el: '#app',
     data: {
+        is_edit:false,
         form: {
             id:'',
             en_name:'',
@@ -92,16 +81,20 @@ new Vue({
             url: '/static/upload/20170912_142921.jpg'
         }, ],
         tag_keyword: '',
+        tag_select:'',
         loading_tag: false,
+        loading:false,
         dialogVisible: false
     },
     methods: {
         get_id(){
             this.form.id = $.getUrlParam('id');
             if(!this.form.id) return;
+            this.is_edit = true;
             this.get_detail();
         },
         get_detail(){
+            this.loading = true;
             do_ajax({
                 url: '/api/case/detail',
                 data: {
@@ -115,11 +108,14 @@ new Vue({
                 this.form.city = data.city;
                 this.form.tag_list = data.tag_list || [];
                 this.form.pic = data.pic;
+                this.loading = false;
             }).catch(msg => {
                 this.$message.error(msg);
+                this.loading = false;
             })
         },
         on_save() {
+            this.loading = true;
             let data = {};
             data.id = this.form.id;
             data.en_name = this.form.en_name;
@@ -129,11 +125,13 @@ new Vue({
             data.tag_list = JSON.stringify(this.form.tag_list);
             data.pic = this.form.pic;
             do_ajax({
-                url: '/api/case/save',
+                url: '/api/case/edit',
                 data: data
             }).then(res => {
-                console.log(res);
+                window.location.assign('/admin/')
+                this.loading = false;
             }).catch(msg => {
+                this.loading = false;
                 this.$message.error(msg);
             })
         },
@@ -143,12 +141,18 @@ new Vue({
             });
         },
         on_select_tag(item) {
+            this.tag_select = item;
+        },
+        on_add_tag(){
+            if(this.tag_select == '') return;
             let index = this.form.tag_list.find(o => {
-                return o.id == item.id
+                return o.id == this.tag_select.id
             });
             if (index === undefined) {
-                this.form.tag_list.push(item);
+                this.form.tag_list.push(this.tag_select);
             }
+            this.tag_keyword = '';
+            this.tag_select = '';
         },
         on_search_tag(queryString, cb) {
             this.loading_tag = true;

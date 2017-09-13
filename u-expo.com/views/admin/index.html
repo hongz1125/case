@@ -40,8 +40,8 @@
                 </el-table-column>
                 <el-table-column label="操作" inline-template>
                     <section>
-                        <el-button type='primary' size="small" @click="window.location.assign('/admin/edit')">修改</el-button>
-                        <el-button type='primary' size="small" @click="on_del">删除</el-button>
+                        <el-button type='primary' size="small" @click="on_edit(row.id)">修改</el-button>
+                        <el-button type='primary' size="small" @click="on_del(row.id)">删除</el-button>
                     </section>
                 </el-table-column>
             </el-table>
@@ -68,9 +68,33 @@ new Vue({
             this.page = val;
             this.get_list();
         },
-        on_add: function() {},
-        on_edit: function() {},
-        on_del: function() {},
+        on_add: function() {
+            window.location.assign(`/admin/edit`);
+        },
+        on_edit: function(id) {
+            window.location.assign(`/admin/edit?id=${id}`);
+        },
+        on_del: function(id) {
+            this.$confirm('此操作将永久删除项目, 是否继续?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+                this.loading = true;
+                do_ajax({
+                    url: '/api/case/del',
+                    data: {
+                        id: id
+                    }
+                }).then(res => {
+                    this.get_list();
+                    this.loading = false;
+                }).catch(msg => {
+                    this.$message.error(msg);
+                    this.loading = false;
+                })
+            });
+        },
         get_list: function() {
             this.loading = true;
             do_ajax({
