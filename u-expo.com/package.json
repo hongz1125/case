@@ -21,6 +21,7 @@
   "devDependencies": {
     "async": "^2.5.0",
     "moment": "^2.18.1",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "supervisor": "^0.12.0"
   }
 }

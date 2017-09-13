@@ -1,3 +1,4 @@
+body{font:12px/1.5 Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5b8b\4f53,sans-serif; }
 .ux_head{
   height: 50px;
   background: #373d41;
@@ -6,6 +7,9 @@
   left: 0;
   right: 0;
 }
+.ux_head img{margin-left:30px;margin-top:10px;}
+.ux_head section{position: absolute;top:0;right:20px;line-height: 50px;color:#fff;}
+.ux_head section a{color:#fff;text-decoration: none;}
 .ux_left{
   position: fixed;
   width: 180px;
@@ -32,21 +36,21 @@
   text-align: right;
 }
 .el-tag{margin-right:10px;}
+.el-menu-item.is-active{color:#fff;}
+.el-breadcrumb{padding:0px 0  20px;}
 
 
 
 
 
-
-
-
+/*
 .ux_head,
 .ux_left,
-/* .ux_body, */
+ .ux_body, 
 .ux_page{
   display: none;
 }
 
 
-
+*/
 

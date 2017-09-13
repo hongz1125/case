@@ -15,6 +15,9 @@ app.use(cookieParser());
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', hbs.__express);
+hbs.registerPartials(__dirname + '/views/layout/');
+
+
 app.set('view engine', 'html');
 app.use('/static', express.static('static'));
 

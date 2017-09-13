@@ -1,125 +1,126 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-    <title>admin</title>
-    <link rel="stylesheet" href="/static/base/css/element.min.css" />
-    <link rel="stylesheet" href="/static/admin/index.css" />
-    <script src="/static/base/js/jquery.min.js"></script>
-    <script src="/static/base/js/vue.min.js"></script>
-    <script src="/static/base/js/element.min.js"></script>
-    <script src="/static/admin/index.js"></script>
-</head>
-
-<body>
-    <section id="app">
-        <header class="ux_head">xxxx</header>
-        <nav class="ux_left">
-            <el-col>
-                <el-menu default-active="1" class="el-menu-vertical-demo" theme="dark">
-                    <el-menu-item index="1">xxxxx</el-menu-item>
-                </el-menu>
-            </el-col>
-        </nav>
-        <section style="display:none;">
-          <h1>图片上传</h1>
-            <el-upload
-              action="/api/upload"
-              list-type="picture-card"
-              :file-list="list_pic"
-              :on-preview="on_pic_show"
-              :on-remove="on_pic_remove">
-              <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog v-model="dialogVisible" size="tiny">
-              <img width="100%" :src="dialogImageUrl" alt="">
-            </el-dialog>
-        </section>
-        <section>
-          <h1>联想</h1>
-          <el-autocomplete
-            v-model="tag_keyword"
-            :fetch-suggestions="on_search_tag"
-            :trigger-on-focus="false"
-            placeholder="添加标签"
-            @select="on_select_tag"
-          ></el-autocomplete>
-          <div>
-            <el-tag
-              v-for="tag in tag_list"
-              :key="tag.id"
-              :closable="true"
-              type="gray"
-              @close="on_colse_tag(tag)"
-            >
-            \{{tag.value}}
-            </el-tag>
-          </div>
-        </section>
+<section id="app">
+    {{> head}} {{> left}}
+    <section class="ux_body">
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>项目列表</el-breadcrumb-item>
+            <el-breadcrumb-item>新增项目</el-breadcrumb-item>
+        </el-breadcrumb>
+        <el-form ref="form" :model="form" label-width="160px" style="width:600px">
+            <el-form-item label="活动中文名">
+                <el-input v-model="form.cn_name"></el-input>
+            </el-form-item>
+            <el-form-item label="活动英文名">
+                <el-input v-model="form.en_name"></el-input>
+            </el-form-item>
+            <el-form-item label="客户">
+                <el-input v-model="form.en_name"></el-input>
+            </el-form-item>
+            <el-form-item label="分类">
+              <el-autocomplete v-model="tag_keyword" :fetch-suggestions="on_search_tag" :trigger-on-focus="false" placeholder="添加标签" @select="on_select_tag"></el-autocomplete>
+              <div>
+                  <el-tag v-for="tag in tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
+                      \{{tag.value}}
+                  </el-tag>
+              </div>
+            </el-form-item>
+            <el-form-item label="活动时间">
+                <el-date-picker v-model="form.time" type="daterange" placeholder="选择日期范围">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item label="城市">
+                <el-input v-model="form.city"></el-input>
+            </el-form-item>
+            <el-form-item label="图片上传">
+              <el-upload
+                class="upload-demo"
+                action="/api/upload"
+                :on-preview="on_pic_show"
+                :on-remove="on_pic_remove"
+                :file-list="list_pic"
+                list-type="picture">
+                <el-button size="small" type="primary">点击上传</el-button>
+                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb;<br />请上传 大于或等于 4张大图；大小为613px * 413px</div>
+              </el-upload>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="on_save">保存</el-button>
+                <el-button>取消</el-button>
+            </el-form-item>
+        </el-form>
     </section>
-</body>
+</section>
 <script>
 new Vue({
     el: '#app',
     data: {
+        form: {},
         dialogImageUrl: '',
-        list_pic:[
-          {name:111,url:'/static/upload/20170912_142921.jpg'},
-          {name:111,url:'/static/upload/20170912_142921.jpg'},
-          {name:111,url:'/static/upload/20170912_142921.jpg'},
-          {name:111,url:'/static/upload/20170912_142921.jpg'},
-        ],
-        tag_keyword:'',
-        tag_list:[
-          {id:9,"value":'上海1'},
-          {id:10,"value":'上海2'},
-          {id:11,"value":'上海3'}
-        ],
-        loading_tag:false,
+        list_pic: [{
+            name: 111,
+            url: '/static/upload/20170912_142921.jpg'
+        }, {
+            name: 111,
+            url: '/static/upload/20170912_142921.jpg'
+        }, {
+            name: 111,
+            url: '/static/upload/20170912_142921.jpg'
+        }, {
+            name: 111,
+            url: '/static/upload/20170912_142921.jpg'
+        }, ],
+        tag_keyword: '',
+        tag_list: [{
+            id: 9,
+            "value": '上海1'
+        }, {
+            id: 10,
+            "value": '上海2'
+        }, {
+            id: 11,
+            "value": '上海3'
+        }],
+        loading_tag: false,
         dialogVisible: false
     },
     methods: {
-      on_colse_tag(item){
-        this.tag_list = this.tag_list.filter(o => {
-          return o.id != item.id
-        });
-      },
-      on_select_tag(item) {
-        let index = this.tag_list.find(o => {
-          return o.id == item.id
-        });
-        if(index === undefined){
-          this.tag_list.push(item);
-        }
-        console.log(this.tag_list)
-      },
-      on_search_tag(queryString, cb) {
-        this.loading_tag = true;
-        do_ajax({
-            url: '/api/tag/list',
-            data: {
-                keyword: queryString,
+        on_save() {},
+        on_colse_tag(item) {
+            this.tag_list = this.tag_list.filter(o => {
+                return o.id != item.id
+            });
+        },
+        on_select_tag(item) {
+            let index = this.tag_list.find(o => {
+                return o.id == item.id
+            });
+            if (index === undefined) {
+                this.tag_list.push(item);
             }
-        }).then(res => {
-            cb(res.data.list);
-            this.loading_tag = false;
-        }).catch(msg => {
-            this.$message.error(msg);
-        })
-      },
-      on_pic_remove(file, fileList) {
-        console.log(file, fileList);
-      },
-      on_pic_show(file) {
-        this.dialogImageUrl = file.url;
-        this.dialogVisible = true;
-      }
+            console.log(this.tag_list)
+        },
+        on_search_tag(queryString, cb) {
+            this.loading_tag = true;
+            do_ajax({
+                url: '/api/tag/list',
+                data: {
+                    keyword: queryString,
+                }
+            }).then(res => {
+                cb(res.data.list);
+                this.loading_tag = false;
+            }).catch(msg => {
+                this.$message.error(msg);
+            })
+        },
+        on_pic_remove(file, fileList) {
+            console.log(file, fileList);
+        },
+        on_pic_show(file) {
+            this.dialogImageUrl = file.url;
+            this.dialogVisible = true;
+        }
     },
-    mounted: function() {
-    }
+    mounted: function() {}
 })
 </script>
-
-</html>
