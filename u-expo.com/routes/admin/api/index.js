@@ -35,9 +35,9 @@ router.post('/login', function(req, res, next) {
   let param = {};
   if (req.body.username == 'admin' && req.body.password == 'admin!@#') {
     res.cookie("is_login",1,{maxAge:24*60*60*1000});
-      res.send(JSON.stringify({ code:0 }));
+      res.json({ code:0 });
   } else {
-      res.send(JSON.stringify({code:1,msg:'用户名或者密码错误！'}));
+      res.json({code:1,msg:'用户名或者密码错误！'});
   }
 });
 
@@ -46,7 +46,6 @@ router.post('/login', function(req, res, next) {
 router.post('/case/list',function(req, res, next){
 
   if(!is_login(req,res)) return;
-
 
   let param = {
     data:{},
@@ -80,11 +79,119 @@ router.post('/case/list',function(req, res, next){
       console.log(err);
     } else {
       param.data = results;
-      res.send(JSON.stringify(param));
+      res.json(param);
     }
   });
 })
 
+//获取单条详细
+router.post('/case/detail',function(req, res, next){
+  let query = {},param = {data:{},code:0};
+  query.id = req.body.id;
+  let tasks = {
+    get_detail: function(callback) {
+      let sql = `SELECT * FROM \`case\` WHERE \`id\` = '${query.id}' LIMIT 0,100`;
+      pool.query(sql, function(err, result) {
+        param.data = result[0];
+        callback(err);
+      });
+    },
+    get_tag:function(callback){
+      let sql = `SELECT * FROM \`relation_case_tag\` WHERE \`case_id\` = '${query.id}'`;
+      pool.query(sql,[query.id], function(err, result) {
+        query.tags = result.reduce((sam,obj) => {
+          sam.push(obj.tag_id);
+          return sam;
+        },[])
+        callback(err);
+      });
+    },
+    get_tag_name:function(callback){
+      if(query.tags.length == 0){
+        callback();
+        return;
+      };
+      let sql = `SELECT * FROM \`tag\` WHERE `;
+      let where = '';
+      where = query.tags.reduce((sam,obj) => {
+        sam.push(`\`id\` = '${obj}'`);
+        return sam;
+      },[]).join(' or ');
+      pool.query(sql + where, function(err, result) {
+        param.data.tag_list = result;
+        callback(err);
+      });
+    }
+  }
+  async.series(tasks, function(err, results) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(param);
+    }
+  });
+})
+
+//---------获取单条 保存
+router.post('/case/save',function(req, res, next){
+  let query = {},param = {data:{},code:0};
+  query.id = req.body.id;
+  query.cn_name = req.body.cn_name;
+  query.en_name = req.body.en_name;
+  query.custom = req.body.custom;
+  query.city = req.body.city;
+  query.start_time = req.body.start_time;
+  query.end_time = req.body.end_time;
+  query.pic = req.body.pic;
+  query.tag_list = JSON.parse(req.body.tag_list);
+
+  let tasks = {
+    save_case: function(callback) {
+      if(query.id){
+        let sql = `UPDATE \`case\` SET 
+          \`cn_name\` = '${query.cn_name}' 
+          WHERE \`id\` = '${query.id}'`;
+        pool.query(sql, function(err, result) {
+          callback(err);
+        });
+      }else{
+        let sql = `INSERT INTO \`case\` VALUES 
+          (null, '${query.cn_name}', '${query.en_name}', '${query.custom}', '${query.city}', '${query.start_time}', '${query.end_time}', '${+new Date()}', '${query.pic}')`;
+        pool.query(sql, function(err, result) {
+          query.id = result.insertId;
+          callback(err);
+        });
+      }
+    },
+    del_relation:function(callback){
+      let sql = `DELETE FROM \`relation_case_tag\` WHERE \`case_id\` = ('${query.id}')`;
+      pool.query(sql, function(err, result) {
+        callback(err);
+      });
+    },
+    add_relation:function(callback){
+      if(query.tag_list.length == 0){
+        callback();
+        return;
+      }
+      let value = query.tag_list.reduce((sam,obj) => {
+        sam.push(`(null,'${query.id}','${obj.id}')`);
+        return sam;
+      },[]).join(',');
+      let sql = `INSERT INTO \`relation_case_tag\` (\`id\`, \`case_id\`, \`tag_id\`) VALUES ${value}`;
+      pool.query(sql, function(err, result) {
+        callback(err);
+      });
+    },
+  }
+  async.series(tasks, function(err, results) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(param);
+    }
+  });
+})
 
 
 //编辑页 - 上传图片
@@ -94,7 +201,7 @@ router.post('/upload',upload.single('file'), function(req, res, next){
     // console.log('原始文件名：%s', file.originalname);
     // console.log('文件大小：%s', file.size);
     // console.log('文件保存路径：%s', file.path);
-    res.send({code:0,data:{name:file.originalname,url:file.path}});
+    res.json({name:file.originalname,url:file.path});
 })
 
 //获取tag -tag
@@ -132,11 +239,10 @@ router.post('/tag/list',function(req,res,next){
       console.log(err);
     } else {
       param.data = results;
-      res.send(JSON.stringify(param));
+      res.json(param);
     }
   });
 });
-
 
 //tag - 添加tag
 router.post('/tag/add',function(req,res,next){
@@ -150,13 +256,13 @@ router.post('/tag/add',function(req,res,next){
   let sql = "SELECT * FROM `tag` WHERE `value` = '"+query.value+"'";
   pool.query(sql, function(err, result) {
     if(result.length){
-      res.send(JSON.stringify({code:'3',msg:'重复啦！'}));
+      res.json({code:'3',msg:'重复啦！'});
       return;
     }
     let sql  = "INSERT INTO `tag` (`value`) VALUES ('" +query.value+ "')";
     pool.query(sql,function(err,result){
       param.data = result.insertId;
-      res.send(JSON.stringify(param));
+      res.json(param);
     })
   });
 });
@@ -172,7 +278,7 @@ router.post('/tag/del',function(req,res,next){
   };
   let sql = "DELETE FROM `tag` WHERE `id` IN ('"+query.id+"')";
   pool.query(sql, function(err, result) {
-    res.send(JSON.stringify(param));
+    res.json(param);
   });
 });
 
@@ -184,7 +290,7 @@ module.exports = router;
 
 function is_login(req,res){
   if(!req.cookies.is_login){
-    res.send(JSON.stringify({code:1}));
+    res.json({code:1});
     return false;
   };
   return true;

@@ -10,7 +10,9 @@ router.get('/', function(req, res, next) {
   }
   res.render('admin/index.html', param);
 });
-router.get('/add', function(req, res, next) {
+
+//进入 项目 编辑页 
+router.get('/edit', function(req, res, next) {
   let param = {};
   if (!req.cookies.is_login){
     res.redirect('/login');
@@ -18,6 +20,8 @@ router.get('/add', function(req, res, next) {
   }
   res.render('admin/index_edit.html', param);
 });
+
+
 
 router.get('/edit', function(req, res, next) {
   let param = {};

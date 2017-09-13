@@ -19,7 +19,7 @@
             <el-form-item label="分类">
               <el-autocomplete v-model="tag_keyword" :fetch-suggestions="on_search_tag" :trigger-on-focus="false" placeholder="添加标签" @select="on_select_tag"></el-autocomplete>
               <div>
-                  <el-tag v-for="tag in tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
+                  <el-tag v-for="tag in form.tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
                       \{{tag.value}}
                   </el-tag>
               </div>
@@ -49,12 +49,34 @@
             </el-form-item>
         </el-form>
     </section>
+    <section>
+        <el-form ref="form" :model="form" label-width="160px" style="width:600px">
+            <el-form-item label="11">
+                <el-input v-model="form.cn_name"></el-input>
+            </el-form-item>
+            <el-autocomplete v-model="tag_keyword" :fetch-suggestions="on_search_tag" :trigger-on-focus="false" placeholder="添加标签" @select="on_select_tag"></el-autocomplete>
+            <div>
+              <el-tag v-for="tag in form.tag_list" :key="tag.id" :closable="true" type="gray" @close="on_colse_tag(tag)">
+                  \{{tag.value}}
+              </el-tag>
+            </div>
+            <el-button type="primary" @click="on_save">保存表单</el-button>
+        </el-form>
+    </section>
 </section>
 <script>
 new Vue({
     el: '#app',
     data: {
-        form: {},
+        form: {
+            id:'',
+            en_name:'',
+            cn_name:'',
+            custom:'',
+            city:'',
+            pic:'',
+            tag_list:[],
+        },
         dialogImageUrl: '',
         list_pic: [{
             name: 111,
@@ -70,34 +92,63 @@ new Vue({
             url: '/static/upload/20170912_142921.jpg'
         }, ],
         tag_keyword: '',
-        tag_list: [{
-            id: 9,
-            "value": '上海1'
-        }, {
-            id: 10,
-            "value": '上海2'
-        }, {
-            id: 11,
-            "value": '上海3'
-        }],
         loading_tag: false,
         dialogVisible: false
     },
     methods: {
-        on_save() {},
+        get_id(){
+            this.form.id = $.getUrlParam('id');
+            if(!this.form.id) return;
+            this.get_detail();
+        },
+        get_detail(){
+            do_ajax({
+                url: '/api/case/detail',
+                data: {
+                    id:this.form.id
+                }
+            }).then(res => {
+                let data = res.data;
+                this.form.en_name = data.en_name;
+                this.form.cn_name = data.cn_name;
+                this.form.custom = data.custom;
+                this.form.city = data.city;
+                this.form.tag_list = data.tag_list || [];
+                this.form.pic = data.pic;
+            }).catch(msg => {
+                this.$message.error(msg);
+            })
+        },
+        on_save() {
+            let data = {};
+            data.id = this.form.id;
+            data.en_name = this.form.en_name;
+            data.cn_name = this.form.cn_name;
+            data.custom = this.form.custom;
+            data.city = this.form.city;
+            data.tag_list = JSON.stringify(this.form.tag_list);
+            data.pic = this.form.pic;
+            do_ajax({
+                url: '/api/case/save',
+                data: data
+            }).then(res => {
+                console.log(res);
+            }).catch(msg => {
+                this.$message.error(msg);
+            })
+        },
         on_colse_tag(item) {
-            this.tag_list = this.tag_list.filter(o => {
+            this.form.tag_list = this.form.tag_list.filter(o => {
                 return o.id != item.id
             });
         },
         on_select_tag(item) {
-            let index = this.tag_list.find(o => {
+            let index = this.form.tag_list.find(o => {
                 return o.id == item.id
             });
             if (index === undefined) {
-                this.tag_list.push(item);
+                this.form.tag_list.push(item);
             }
-            console.log(this.tag_list)
         },
         on_search_tag(queryString, cb) {
             this.loading_tag = true;
@@ -121,6 +172,8 @@ new Vue({
             this.dialogVisible = true;
         }
     },
-    mounted: function() {}
+    mounted: function() {
+        this.get_id();
+    }
 })
 </script>
