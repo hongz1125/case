@@ -84,7 +84,7 @@ router.post('/case/list',function(req, res, next){
   });
 })
 
-//获取单条详细
+// 单条 - 详细
 router.post('/case/detail',function(req, res, next){
   let query = {},param = {data:{},code:0};
   query.id = req.body.id;
@@ -92,17 +92,25 @@ router.post('/case/detail',function(req, res, next){
     get_detail: function(callback) {
       let sql = `SELECT * FROM \`case\` WHERE \`id\` = '${query.id}' LIMIT 0,100`;
       pool.query(sql, function(err, result) {
-        param.data = result[0];
-        callback(err);
+        if(err){
+          callback(err);
+          return;
+        }
+        if(result[0]){
+          param.data = result[0];
+          callback(err);
+        }else{
+          callback({code:11,msg:'没有找到数据!'})
+        }
       });
     },
     get_tag:function(callback){
       let sql = `SELECT * FROM \`relation_case_tag\` WHERE \`case_id\` = '${query.id}'`;
-      pool.query(sql,[query.id], function(err, result) {
+      pool.query(sql, function(err, result) {
         query.tags = result.reduce((sam,obj) => {
           sam.push(obj.tag_id);
           return sam;
-        },[])
+        },[]);
         callback(err);
       });
     },
@@ -125,7 +133,7 @@ router.post('/case/detail',function(req, res, next){
   }
   async.series(tasks, function(err, results) {
     if(err) {
-      console.log(err);
+      res.json(err);
     } else {
       res.json(param);
     }
@@ -225,11 +233,7 @@ router.post('/case/del',function(req, res, next){
 //编辑页 - 上传图片
 router.post('/upload',upload.single('file'), function(req, res, next){
     var file = req.file;
-    // console.log('文件类型：%s', file.mimetype);
-    // console.log('原始文件名：%s', file.originalname);
-    // console.log('文件大小：%s', file.size);
-    // console.log('文件保存路径：%s', file.path);
-    res.json({name:file.originalname,url:file.path});
+    res.json({code:0,data:{name:file.originalname,url:'/' + file.path}});
 })
 
 //获取tag -tag

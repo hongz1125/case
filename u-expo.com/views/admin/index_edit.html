@@ -39,7 +39,8 @@
                 action="/api/upload"
                 :on-preview="on_pic_show"
                 :on-remove="on_pic_remove"
-                :file-list="list_pic"
+                :on-success="on_pic_upload"
+                :file-list="pic_list"
                 list-type="picture-card">
                 <i class="el-icon-plus"></i>
               </el-upload>
@@ -51,6 +52,24 @@
             </el-form-item>
         </el-form>
     </section>
+    <el-form>
+            <el-form-item label="图片上传">
+              <el-upload
+                class="upload-demo"
+                action="/api/upload"
+                :on-preview="on_pic_show"
+                :on-remove="on_pic_remove"
+                :on-success="on_pic_upload"
+                :file-list="pic_list"
+                list-type="picture-card">
+                <i class="el-icon-plus"></i>
+              </el-upload>
+                <div>只能上传jpg/png文件，且不超过500kb;请上传 大于或等于 4张大图；大小为613px * 413px</div>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="on_save">保存</el-button>
+            </el-form-item>
+    </el-form>
 </section>
 <script>
 new Vue({
@@ -63,23 +82,11 @@ new Vue({
             cn_name:'',
             custom:'',
             city:'',
-            pic:'',
+            pic:[],
             tag_list:[],
         },
+        pic_list:[],
         dialogImageUrl: '',
-        list_pic: [{
-            name: 111,
-            url: '/static/upload/20170912_142921.jpg'
-        }, {
-            name: 111,
-            url: '/static/upload/20170912_142921.jpg'
-        }, {
-            name: 111,
-            url: '/static/upload/20170912_142921.jpg'
-        }, {
-            name: 111,
-            url: '/static/upload/20170912_142921.jpg'
-        }, ],
         tag_keyword: '',
         tag_select:'',
         loading_tag: false,
@@ -107,7 +114,8 @@ new Vue({
                 this.form.custom = data.custom;
                 this.form.city = data.city;
                 this.form.tag_list = data.tag_list || [];
-                this.form.pic = data.pic;
+                this.form.pic = JSON.parse(data.pic || '[]');
+                this.pic_list = JSON.parse(data.pic || '[]');
                 this.loading = false;
             }).catch(msg => {
                 this.$message.error(msg);
@@ -123,7 +131,7 @@ new Vue({
             data.custom = this.form.custom;
             data.city = this.form.city;
             data.tag_list = JSON.stringify(this.form.tag_list);
-            data.pic = this.form.pic;
+            data.pic = JSON.stringify(this.form.pic);
             do_ajax({
                 url: '/api/case/edit',
                 data: data
@@ -168,10 +176,23 @@ new Vue({
                 this.$message.error(msg);
             })
         },
+        on_pic_upload(res, file, fileList){
+            file.url = res.data.url;
+            this.form.pic.push({
+                url:res.data.url,
+                name:res.data.name
+            });
+        },
         on_pic_remove(file, fileList) {
-            console.log(file, fileList);
+            this.form.pic = this.form.pic.reduce((sam,obj) => {
+                if(obj.url != file.url){
+                    sam.push(obj);
+                }
+                return sam;
+            },[]);
         },
         on_pic_show(file) {
+            console.log(this.form.pic)
             this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         }

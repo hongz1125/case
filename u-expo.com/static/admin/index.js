@@ -8,7 +8,7 @@ function do_ajax(param) {
             if (res.code == 0) {
               resolve(res);
             } else {
-              reject(res.msg);
+              reject(res.msg || '返回数据格式错误！');
             }
           },200)
         }catch(err){
