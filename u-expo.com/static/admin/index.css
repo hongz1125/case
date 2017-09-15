@@ -1,4 +1,8 @@
-body{font:12px/1.5 Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5b8b\4f53,sans-serif; }
+body{
+  font-size:12px;
+  line-height:1.5;
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+ }
 .ux_head{
   height: 50px;
   background: #373d41;
@@ -10,6 +14,7 @@ body{font:12px/1.5 Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5b8b\4f53,sa
 .ux_head img{margin-left:30px;margin-top:10px;}
 .ux_head section{position: absolute;top:0;right:20px;line-height: 50px;color:#fff;}
 .ux_head section a{color:#fff;text-decoration: none;}
+.ux_crumb{position:fixed;left:195px;top:30px;}
 .ux_left{
   position: fixed;
   width: 180px;
@@ -36,17 +41,16 @@ body{font:12px/1.5 Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5b8b\4f53,sa
   text-align: right;
 }
 .el-tag{margin-right:10px;}
-.el-menu-item.is-active{color:#fff;}
+.el-menu-item{line-height:42px;height:42px;font-size:12px;}
+.el-menu-item.is-active{color:#fff;background:#00C1DE;}
 .el-breadcrumb{padding:0px 0  20px;}
 .el-menu-item a{display: block;color:#fff;text-decoration: none;}
 
 
 
-
-
 .ux_head,
 .ux_left,
- .ux_body, 
+ /* .ux_body,  */
 .ux_page{
   display: none;
 }
