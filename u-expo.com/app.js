@@ -27,11 +27,11 @@ app.use('/static', express.static('static'));
 
 //session 设置
 app.use(session({
-  secret:'secret',
-  cookie:{
-    maxAge:24*60*60*1000
+  secret: 'secret',
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000
   },
-  resave:true,
+  resave: true,
   saveUninitialized: true
 }));
 
@@ -40,22 +40,22 @@ var admin = require('./routes/admin/index');
 var login = require('./routes/admin/login');
 var api = require('./routes/admin/api/index');
 
-app.use('/admin',admin);
-app.use('/login',login);
+app.use('/admin', admin);
+app.use('/login', login);
 
 
-app.use('/api',api)
+app.use('/api', api)
 
 
 ////////////////////////////////////////////////////////
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
