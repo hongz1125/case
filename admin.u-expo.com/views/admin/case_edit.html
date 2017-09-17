@@ -1,12 +1,15 @@
 <section id="app">
     {{> head}} {{> left}}
-    <section class="ux_body"  v-loading.fullscreen.lock="loading">
+    <section class="ux_crumb">
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>项目列表</el-breadcrumb-item>
+            <el-breadcrumb-item><a href="/admin">首页</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="/admin/case">项目管理</a></el-breadcrumb-item>
             <el-breadcrumb-item v-if="!is_edit">新增项目</el-breadcrumb-item>
             <el-breadcrumb-item v-else>编辑项目</el-breadcrumb-item>
         </el-breadcrumb>
+    </section>
+    <section class="ux_body"  v-loading.fullscreen.lock="loading">
+
         <el-form ref="form" :model="form" label-width="160px" style="width:800px">
             <el-form-item label="活动中文名">
                 <el-input v-model="form.cn_name"></el-input>

@@ -31,6 +31,10 @@ body{
   right: 15px;
   overflow: auto;
 }
+.ux_body a{
+  color:#20a0ff;
+  text-decoration: none;
+}
 .ux_login{
   padding: 20px;
   width: 500px;
@@ -45,14 +49,14 @@ body{
 .el-menu-item.is-active{color:#fff;background:#00C1DE;}
 .el-breadcrumb{padding:0px 0  20px;}
 .el-menu-item a{display: block;color:#fff;text-decoration: none;}
+.el-breadcrumb__item__inner a{text-decoration: none;color:#97a8be}
 
 
-
-.ux_head,
+/* .ux_head,
 .ux_left,
- /* .ux_body,  */
+ .ux_body, 
 .ux_page{
   display: none;
-}
+} */
 
 
