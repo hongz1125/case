@@ -26,7 +26,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port,() => {
-  console.log('----------6002 服务开启！http://admin.u-expo.com/')
+  console.log('开启服务 ------ localhost:6002/admin admin后台')
 });
 server.on('error', onError);
 server.on('listening', onListening);

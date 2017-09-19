@@ -98,6 +98,7 @@ body a{color:#3e3a39;text-decoration:none;outline:none;}
 .zl_list_11 ul.no1 li{position:absolute;left:0;top:0;width:613px;height:413px;}
 .zl_list_11 ul.no2{position:absolute;left:623px;top:0;width:148px;height:413px;}
 .zl_list_11 ul.no2 li{margin-bottom:7px;cursor:pointer;}
+.zl_list_11 ul.no2 li img{width:148px;height:98px;}
 .zl_list_12{position:fixed;width:150px;height:300px;top:160px;right:20px;}
 .zl_list_13{position:relative;width:150px;height:295px;}
 .zl_list_13 a.noico{display:block;width:55px;height:55px;border-radius:28px;}

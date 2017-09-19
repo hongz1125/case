@@ -11,7 +11,6 @@ router.get('/detail', function(req, res, next) {
   let tasks = {
     get_detail: function(callback) {
       let sql = `SELECT * FROM \`case\` WHERE \`id\` = '${param.id}' LIMIT 0,100`;  
-      console.log(sql)
       pool.query(sql, function(err, result) {
         if(err){
           callback(err);
@@ -19,6 +18,7 @@ router.get('/detail', function(req, res, next) {
         }
         if(result[0]){
           param.data = result[0];
+          param.data.pic = JSON.parse(param.data.pic);
           callback(err);
         }else{
           callback({code:11,msg:'没有找到数据!'})
@@ -46,7 +46,6 @@ router.get('/detail', function(req, res, next) {
         return sam;
       },[]).join(' or ');
       let sql = `SELECT * FROM \`tag\` WHERE ${where}`;
-      console.log(sql)
       pool.query(sql, function(err, result) {
         param.data.tag_list = result;
         callback(err);

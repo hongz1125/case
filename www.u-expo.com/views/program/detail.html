@@ -1,5 +1,51 @@
-{{id}}
-
-
-
-{{data}}
+<div class="baseBoxbg4">
+{{#with data}}
+    <div class="baseBox">
+        <div class="zl_list_9" id="section_1" style="height:200px">
+            <a href="index.html" class="logo">&nbsp;</a>
+            <div class="zl_list_10">
+                <h5>{{cn_name}}</h5>
+                <h6>{{en_name}}</h6>
+                <p>客　户：{{custom}}</p>
+                <p>分　类：会议</p>
+                <p>城　市：{{city}}</p>
+                <p>日　期：{{format_date start_time}} / {{format_date end_time}}</p>
+            </div>
+        </div>
+        <div class="zl_list_11">
+            <ul class="no1" id="jsSildeBig">
+				{{pic_list pic}}
+            </ul>
+            <ul class="no2" id="jsSildeSmall">
+            	{{pic_list_small pic}}
+            </ul>
+        </div>
+    </div>
+    {{/with}}
+    <div class="zl_list_15"></div>
+</div>
+<div class="baseBoxbg3">
+    <div class="baseBox">
+        <div class="zl_list_8">
+            Copyright &copy; 2014 • CUEC • All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Design By CUEC
+        </div>
+    </div>
+</div>
+<!--tip--->
+<div class="zl_list_12">
+    <div class="zl_list_13">
+        <a href="en/index.html" class="rounded noico no1">&nbsp;</a>
+        <a href="mailto:Hr@u-expo.com" class="rounded noico no2">&nbsp;</a>
+        <a href="http://weixin.qq.com/" class="rounded noico no3">&nbsp;</a>
+        <a href="http://weibo.com/" class="rounded noico no4">&nbsp;</a>
+        <div class="h9">&nbsp;</div>
+        <ul id="nav" class="">
+            <li><a href="index.html#section_1">首　页</a></li>
+            <li><a href="index.html#section_2">关于我们</a></li>
+            <li><a href="index.html#section_3">合作伙伴</a></li>
+            <li><a href="index.html#section_4">成功案例</a></li>
+            <li><a href="index.html#section_5">联系我们</a></li>
+        </ul>
+    </div>
+</div>
+<!--/tip--->

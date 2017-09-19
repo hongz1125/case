@@ -1,5 +1,5 @@
 var path = require('path');
-var pool = require(path.join(__dirname, '../config/sql'));
+var pool = require('../../../config/sql');
 var express = require('express');
 var router = express.Router();
 var async = require('async');

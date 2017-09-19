@@ -1,10 +1,12 @@
 var express = require('express');
 var path = require('path');
-var hbs = require('hbs');
 var session = require('express-session');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('./config/hbs');
+
+
 
 var app = express();
 
