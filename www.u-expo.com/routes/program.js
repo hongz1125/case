@@ -5,6 +5,68 @@ var router = express.Router();
 var async = require('async');
 
 
+router.get('/list',function(req,res,next){
+  let param = {};
+  param.tag = req.query.tag;
+  param.page = req.query.page || 1;
+  param.page_size = 10;
+  param.ids = [];
+
+  let tasks = {
+    find_ids:function(callback){
+      if(!param.tag){
+        callback();
+        return;
+      }
+      let sql = `SELECT * FROM \`relation_case_tag\` WHERE \`tag_id\` = '${param.tag}' LIMIT 0,1000`;
+      pool.query(sql, function(err, result) {
+        for(var i in result){
+          param.ids.push(result[i].case_id)
+        }
+        callback(err);
+      });
+    },
+    get_list: function(callback) {
+      if(!param.ids.length){
+        callback();
+        return;
+      }
+      param.page_count = param.ids.length;
+      let where = param.ids.reduce((sam,obj) => {
+        sam.push(`\`id\` = '${obj}'`);
+        return sam;
+      },[]).join(' OR ');
+      let sql = `SELECT * FROM \`case\` WHERE ${where} ORDER BY \`dateline\` LIMIT ${(param.page-1)*10},10`;
+      pool.query(sql, function(err, result) {
+        if(err){
+          callback(err);
+        }else{
+          param.list = result;
+          callback()
+        }
+      });
+    },
+    list: function(callback) {
+      callback()
+      // let sql = 'SELECT * FROM `case` ORDER BY `id` DESC LIMIT ' + body.page * body.page_size + "," + body.page_size;
+      // pool.query(sql, function(err, result) {
+      //     let list = [];
+      //     for(var i in result){
+      //       list.push(result[i]);
+      //     }
+      //     callback(err, list);
+      // });
+    }
+  };
+  async.series(tasks, function(err, results) {
+    if(err) {
+      console.log(err);
+    } else {
+      req.query.debug ? res.json(param) : res.render('program/list.html', param);
+    }
+  });
+})
+
 router.get('/detail', function(req, res, next) {
   let param = {};
   param.id = req.query.id;
