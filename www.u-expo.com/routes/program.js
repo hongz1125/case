@@ -12,6 +12,12 @@ router.get('/list',function(req,res,next){
   param.page_size = 10;
   param.ids = [];
 
+  let temp = 'program/list.html';
+  if(req.query.project){
+    temp = `subject/${req.query.project}.html`;
+  }
+
+
   let tasks = {
     find_ids:function(callback){
       if(!param.tag){
@@ -31,7 +37,7 @@ router.get('/list',function(req,res,next){
         callback();
         return;
       }
-      param.page_count = param.ids.length;
+      param.page_total = param.ids.length;
       let where = param.ids.reduce((sam,obj) => {
         sam.push(`\`id\` = '${obj}'`);
         return sam;
@@ -42,27 +48,21 @@ router.get('/list',function(req,res,next){
           callback(err);
         }else{
           param.list = result;
-          callback()
+          console.log(result.length)
+          result.reduce((sam,obj) => {
+            obj.pic = JSON.parse(obj.pic);
+            return sam;
+          },[])
+          callback(err);
         }
       });
-    },
-    list: function(callback) {
-      callback()
-      // let sql = 'SELECT * FROM `case` ORDER BY `id` DESC LIMIT ' + body.page * body.page_size + "," + body.page_size;
-      // pool.query(sql, function(err, result) {
-      //     let list = [];
-      //     for(var i in result){
-      //       list.push(result[i]);
-      //     }
-      //     callback(err, list);
-      // });
     }
   };
   async.series(tasks, function(err, results) {
     if(err) {
       console.log(err);
     } else {
-      req.query.debug ? res.json(param) : res.render('program/list.html', param);
+      req.query.debug ? res.json(param) : res.render(temp, param);
     }
   });
 })

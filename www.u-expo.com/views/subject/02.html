@@ -1,0 +1,57 @@
+<div class="baseBoxbg4">
+    <div class="baseBox">
+        <div class="zl_list_53">
+            <section><a href="/index.html" class="logo">&nbsp;</a></section>
+            <h2 class="no2">德国仓库 · 科隆</h2>
+            <h3 class="under_line">
+        联系人：Karida Song<br />
+        地　址：Wipperfürther Strasse 29-31 D-51103 Koeln
+      </h3>
+            <p>
+                2016年我公司在捷克-布尔诺国际机械工业博览会中取得了圆满成功，2017年10月将参加德国杜塞尔多夫国际劳动安全及健康用品展览会，以及2017捷克-布尔诺国际机械工业博览会的搭建工作，这对我公司海外业务的拓展无疑是锦上添花。
+                <p>
+                    <img src="/static/images/2017_base/list_pic_2.png" />
+                    <br />
+                    <br />
+                    <br />
+                </p>
+        </div>
+    </div>
+    <div class="baseBox">
+        <div class="zl_list_53">
+            <h2 class="no5">成功案例</h2>
+            <h3 class="under_line2">
+        每一个案例都见证着我们成长的印记，今天这里记录了我们难忘的回忆，明天我们邀请您与我们一起走向更加美好的未来。
+      </h3>
+        </div>
+    </div>
+    <div class="baseBox">
+        <!--case-->
+        {{#each list}}
+        <div class="zl_list_6_2">
+            <a href="/program/detail?id={{id}}"><img src="{{pic_first pic}}" class="zl62_img" /></a>
+            {{format_show_date start_time}}
+            <div class="zl62_type">/ 设计 / 搭建</div>
+            <div class="zl62_line"></div>
+            <div class="zl62_title">
+                <a href="/program/detail?id={{id}}">{{cn_name}}</a>
+                <p>
+                    <a href="/program/detail?id={{id}}">{{en_name}}</a>
+                    <br />
+                    <br /> 客　户：{{custom}}
+                </p>
+            </div>
+        </div>
+        {{/each}}
+        <!--/case-->
+        {{page page page_size page_total tag}}
+    </div>
+    <div class="zl_list_15"></div>
+</div>
+<div class="baseBoxbg3">
+    <div class="baseBox">
+        <div class="zl_list_8">
+            Copyright &copy; 2014 • CUEC • All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Design By CUEC
+        </div>
+    </div>
+</div>

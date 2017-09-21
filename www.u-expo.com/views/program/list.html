@@ -9,14 +9,14 @@
             <!--case-->
             {{#each list}}
             <div class="zl_list_6_2">
-                <a href="program22.html"><img src="static/images/ad/2014_99.jpg" class="zl62_img" /></a>
+                <a href="program22.html"><img src="{{pic_first pic}}" class="zl62_img" /></a>
                 {{format_show_date start_time}}
                 <div class="zl62_type">/ 设计 / 搭建</div>
                 <div class="zl62_line"></div>
                 <div class="zl62_title">
-                    <a href="program22.html">2014-99好车巡回展</a>
+                    <a href="/program/detail?id={{id}}">{{cn_name}}</a>
                     <p>
-                        <a href="program22.html"></a>
+                        <a href="/program/detail?id={{id}}">{{en_name}}</a>
                         <br />
                         <br /> 客　户：{{custom}}
                     </p>
@@ -24,13 +24,7 @@
             </div>
             {{/each}}
             <!--/case-->
-            {{page page}}
-            <div class="zl_list_6_3 clearfix">
-                <a href="#" class="hover">1</a>
-                <a href="#">2</a>
-                <a href="#">...</a>
-                <a href="#">&gt;</a>
-            </div>
+            {{page page page_size page_total tag}}
         </div>
         <div class="zl_list_15"></div>
     </div>
