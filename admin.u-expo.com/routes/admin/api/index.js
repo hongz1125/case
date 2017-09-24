@@ -52,25 +52,49 @@ router.post('/case/list',function(req, res, next){
     page_total: function(callback) {
       let query = 'SELECT COUNT(1) FROM `case`';
       pool.query(query, function(err, result) {
-        callback(err, result[0]['COUNT(1)']);
+        param.data.page_total = result[0]['COUNT(1)'];
+        callback(err);
+      });
+    },
+    get_tag_map:function(callback){
+      let sql = `SELECT * FROM \`tag\``;
+      pool.query(sql, function(err, result) {
+            body.tag_map = result;
+            console.log(body.tag_map)
+            callback(err);
       });
     },
     list: function(callback) {
       let query = 'SELECT * FROM `case` ORDER BY `id` DESC LIMIT ' + body.page * body.page_size + "," + body.page_size;
       pool.query(query, function(err, result) {
-          let list = [];
-          for(var i in result){
-            list.push(result[i]);
-          }
-          callback(err, list);
+          param.data.list = result;
+          callback(err);
       });
+    },
+    get_tag:function(callback){
+      let where = param.data.list.reduce((sam,obj) => {
+        sam.push(`\`case_id\` = '${obj.id}'`);
+        return sam;
+      },[]).join(' or ');
+      let sql = `SELECT * FROM \`relation_case_tag\` WHERE ${where}`;
+      pool.query(sql, function(err, result) {
+        console.log(result);
+        param.data.list.reduce((sam,obj) => {
+          obj.tag_list = result.reduce((s,o) => {
+            if(o.case_id == obj.id){
+              s.push(body.tag_map.find(oo => oo.id == o.tag_id).value);
+            }
+            return s;
+          },[]).join(',');
+        },[]);
+        callback(err);
+      })
     }
   };
   async.series(tasks, function(err, results) {
     if(err) {
       console.log(err);
     } else {
-      param.data = results;
       res.json(param);
     }
   });
@@ -162,8 +186,8 @@ router.post('/case/edit',function(req, res, next){
           callback(err);
         });
       }else{
-        let sql = `INSERT INTO \`case\` VALUES 
-          (null, '${query.cn_name}', '${query.en_name}', '${query.custom}', '${query.city}', '${query.start_time}', '${query.end_time}', '${+new Date()}', '${query.pic}')`;
+        let sql = `INSERT INTO \`case\` (\`cn_name\`, \`en_name\`, \`custom\`, \`city\`, \`start_time\`, \`end_time\`, \`dateline\`, \`pic\`) VALUES 
+          ('${query.cn_name}', '${query.en_name}', '${query.custom}', '${query.city}', '${query.start_time}', '${query.end_time}', '${+new Date()}', '${query.pic}')`;
         pool.query(sql, function(err, result) {
           query.id = result.insertId;
           callback(err);

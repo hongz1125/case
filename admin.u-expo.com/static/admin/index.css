@@ -51,7 +51,7 @@ body{
 .el-menu-item a{display: block;color:#fff;text-decoration: none;}
 .el-breadcrumb__item__inner a{text-decoration: none;color:#97a8be}
 
-
+.el-table .cell, .el-table th>div{padding-left:5px;padding-right: 5px;}
 /* .ux_head,
 .ux_left,
  .ux_body, 

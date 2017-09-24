@@ -40,13 +40,15 @@ var admin = require('./routes/admin/index');
 var login = require('./routes/admin/login');
 var api = require('./routes/admin/api/index');
 
+
 app.use('/admin', admin);
 app.use('/login', login);
-
-
 app.use('/api', api)
 
-
+app.use('/',function(req,res){
+  res.redirect('/admin');
+  res.end();
+});
 ////////////////////////////////////////////////////////
 
 app.use(function (req, res, next) {

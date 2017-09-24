@@ -1,6 +1,7 @@
 function do_ajax(param) {
   return new Promise((resolve, reject) => {
     let params = Object.assign({},{type:'POST',dataType:'html'},param);
+    console.log(params);
     $.ajax(params).done((result, textStatus, jqXHR) => {
         try{
           let res = JSON.parse(result);

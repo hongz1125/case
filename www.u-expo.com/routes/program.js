@@ -25,6 +25,7 @@ router.get('/list',function(req,res,next){
         return;
       }
       let sql = `SELECT * FROM \`relation_case_tag\` WHERE \`tag_id\` = '${param.tag}' LIMIT 0,1000`;
+      console.log(sql);
       pool.query(sql, function(err, result) {
         for(var i in result){
           param.ids.push(result[i].case_id)
@@ -42,7 +43,7 @@ router.get('/list',function(req,res,next){
         sam.push(`\`id\` = '${obj}'`);
         return sam;
       },[]).join(' OR ');
-      let sql = `SELECT * FROM \`case\` WHERE ${where} ORDER BY \`dateline\` LIMIT ${(param.page-1)*10},10`;
+      let sql = `SELECT * FROM \`case\` WHERE ${where} ORDER BY \`start_time\` LIMIT ${(param.page-1)*10},10`;
       pool.query(sql, function(err, result) {
         if(err){
           callback(err);
