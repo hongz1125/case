@@ -1,1 +1,11 @@
+//node 服务
+npm install
+
+//服务开启
 supervisor ./bin/www
+
+//数据库配置目录
+config/sql.js
+
+
+说明 ：目前代码采用  linux环境下 node + mysql 实现
