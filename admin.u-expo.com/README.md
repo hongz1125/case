@@ -3,6 +3,8 @@ npm install
 
 # 服务开启
 supervisor ./bin/www
+pm2 start ./bin/www --watch --name admin
+
 
 # 数据库配置目录
 config/sql.js
