@@ -40,6 +40,7 @@
               <el-upload
                 class="upload-demo"
                 action="/api/upload"
+                :before-upload="on_pic_before"
                 :on-preview="on_pic_show"
                 :on-remove="on_pic_remove"
                 :on-success="on_pic_upload"
@@ -170,7 +171,19 @@ new Vue({
                 this.$message.error(msg);
             })
         },
+        on_pic_before(file){
+            const isJPG = file.type.search(/jpeg|png/) > -1;
+            const isLt2M = file.size / 1024 / 1024 < .5;
+            if (!isJPG) {
+                this.$message.error('上传头像图片只能是 JPG 或 PNG 格式!');
+            }
+            if (!isLt2M) {
+                this.$message.error('上传头像图片大小不能超过 500kb!');
+            }
+            return isJPG && isLt2M;
+        },
         on_pic_upload(res, file, fileList){
+            console.log(res, file, fileList)
             file.url = res.data.url;
             this.form.pic.push({
                 url:res.data.url,
