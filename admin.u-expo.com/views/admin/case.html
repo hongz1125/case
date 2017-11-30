@@ -9,7 +9,7 @@
     </section>
     <section class="ux_body">
         <section>
-            <el-button @click="on_add" type="primary">新增项目</el-button>
+            <el-button @click="on_add" type="primary"> + 新增项目</el-button>
         </section>
         <br />
         <section  v-loading.fullscreen.lock="loading">
@@ -18,7 +18,7 @@
                 </el-table-column>
                 <el-table-column label="活动名称" width="180" inline-template>
                     <section>
-                        <a :href="'?id=' + row.id" target="_blank">\{{row.cn_name}}
+                        <a target="_blank" :href="'http://www.u-expo.com/program/detail?id=' + row.id" target="_blank">\{{row.cn_name}}
                         <br /> \{{row.en_name}}</a>
                     </section>
                 </el-table-column>
