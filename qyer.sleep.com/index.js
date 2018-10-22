@@ -14,7 +14,7 @@ let bed_param = {
     return ret
   }],
   data: {
-    'bed_id':1,
+    'bed_id':8,
     'start':+new Date(moment(+new Date()).format("YYYY-MM-DD 12:00:00"))/1000,
     'end':+new Date(moment(+new Date()).format("YYYY-MM-DD 13:29:59"))/1000
   },
@@ -27,7 +27,7 @@ function get_bed() {
   time = setInterval(()=>{
     n++;
     console.log('请求次数:',n);
-    if(n > 10) clearInterval(time);
+    if(n > 10000) clearInterval(time);
     axios(bed_param)
     .then(res => {
       if(res.data.status_code == 0){
